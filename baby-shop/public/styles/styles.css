@@ -1,0 +1,12 @@
+.notFound {
+  text-align: center;
+  margin: 0 auto;
+  width: 500px;
+  z-index: 999;
+}
+.notFound .goBack {
+  border-radius: 30px !important;
+}
+.notFound img {
+  width: 500px;
+}
