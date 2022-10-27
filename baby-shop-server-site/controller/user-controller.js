@@ -1,40 +1,50 @@
 const { validationResult } = require('express-validator');
-
+const userModel = require('../models/modelUser');
+const bcrypt = require('bcryptjs');
 let users = [{
         email: 'abir@gmail.com',
-        user: 'abir1',
+        username: 'abir1',
     },
     {
         email: 'hasan@gmail.com',
-        user: 'hasan',
+        username: 'hasan',
     },
 ]
 
-function allUser(req, res, next) {
-    res.json(users);
+async function allUser(req, res, next) {
+    let dbUsers = await userModel.find();
+    res.json(dbUsers).status(201);
 }
 
 
-function createUser(req, res, next) {
+
+async function createUser(req, res, next) {
     // Finds the validation errors in this request and wraps them in an object with handy functions
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({
+        return res.status(422).json({
             errors: errors.array()
         });
     }
 
     const {
         email,
-        user
+        username,
+        password
     } = req.body;
-    users.push({
+
+   
+
+    let newUser = await new userModel({
         email,
-        user
-    })
+        username,
+        password
+    }).save();
+
+
     return res.json([
         req.body,
-        users
+        newUser
     ]);
 }
 
@@ -42,38 +52,45 @@ function createUser(req, res, next) {
 function getUser(req, res, next){
     email = req.params.email; 
     let result = users.find(i=>i.email === email);
-    return req.json(result).status(200);
+    return res.json(result).status(200);
+}
+
+function deleteUser(req, res, next){
+    email = req.params.email; 
+    let index = users.findIndex(i=>i.email === email);
+    users.splice(index,1);
+    return res.json(users).status(200);
 }
 
 
-function registerUser(req, res, next) {
+async function registerUser(req, res, next) {
     // Finds the validation errors in this request and wraps them in an object with handy functions
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({
+        return res.status(422).json({
             errors: errors.array()
         });
     }
 
     const {
-        email,
         username,
+        email,
         password
     } = req.body;
 
-    users.push({
+    let hashPassword = await bcrypt.hash(password,10);
+
+    let newUser = await new userModel({
         email,
         username,
-        password
-    })
-
-    return  res.status(200).json([
-        req.body,
-        users
-    ])
+        password: hashPassword
+    }).save();
+    
+    return  res.status(201).json(newUser);
 
 }
 exports.allUser = allUser;
 exports.createUser = createUser;
 exports.registerUser = registerUser;
 exports.getUser = getUser;
+exports.deleteUser = deleteUser;

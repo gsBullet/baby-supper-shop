@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Login() {
     
@@ -52,7 +53,7 @@ function Login() {
                                                 <div className="form-group text-center">
                                                     <div className="link">
                                                         <a href="#">Forgot your password?</a>
-                                                        <a href="#">Register?</a>
+                                                        <Link to="/register">Register?</Link>
                                                     </div>
                                                 </div>
                                                 <div className="form-group text-center">

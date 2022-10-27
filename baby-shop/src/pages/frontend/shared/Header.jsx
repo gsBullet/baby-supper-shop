@@ -34,10 +34,10 @@ function Header() {
                                 <div className="userinfo-inner">
                                     <ul className="userinfo">
                                         <li className="log-in">
-                                            <a href="loginpage.html" id="customer_login_link">Log in</a>
+                                            <Link to="/login" id="customer_login_link">Log in</Link>
                                         </li>
                                         <li className="create_account">
-                                            <a href="user-register.html" id="customer_register_link">Create Account</a>
+                                            <Link to="/register" id="customer_register_link">Create Account</Link>
                                         </li>
                                         <li className="wishlist">
                                             <a href="mywishlistpage.html">Wishlist</a>

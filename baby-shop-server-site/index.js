@@ -1,4 +1,5 @@
   const express = require('express')
+  const mongoose = require('mongoose');
   const app = express()
   const port = 5000
 
@@ -10,16 +11,26 @@
   const productsRouter = require('./routers/product-router');
 
   app.set('json spaces', 4);
-  
+
   app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({extended: false}))
+  app.use(bodyParser.urlencoded({
+      extended: false
+  }))
   app.use(formData.parse());
   app.use(cors());
 
   app.use('/api/user', userRouter);
   app.use('/api/products', productsRouter);
 
+  mongoose
+      .connect('mongodb+srv://Bullet_BRUR:glmbrurict@cluster0.0fsdqn6.mongodb.net/baby_shop_db?retryWrites=true&w=majority')
+      .then(() => {
+          console.log("mongoose connect succesfull");
+          app.listen(port, () => {
+              console.log(`Example app listening on port ${port}`)
+          })
 
-  app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-  })
+      })
+      .catch((err) => {
+          console.log(err);
+      })
