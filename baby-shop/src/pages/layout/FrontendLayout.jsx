@@ -10,13 +10,11 @@ function FrontendLayout() {
             <div id='index'>
                 <main>
                      {/* ---------------HEADER OPTION ---------- */}
-                     <Header />
-                    {/* --------------------hometop------------ */}
-                    <Outlet/>
-                    
-                    
+                     <Header/>
+                    {/* --------------------home page------------ */}
+                    <Outlet/> 
                     {/* -----------------footer-------------------- */}
-                    <Footer />
+                    <Footer/>
                 </main>
             </div>
         </>

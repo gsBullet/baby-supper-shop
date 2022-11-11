@@ -858,8 +858,8 @@ function AllProducts() {
                                                         </div>
                                                         <div className="image">
                                                             <a href="#" className="thumbnail product-thumbnail">
-                                                                <img src="assets/images/product/9.jpg" alt="product-img" />
-                                                                <img className="product-img-extra change" alt="product-img" src="assets/images/product/10.jpg" />
+                                                                <img src="./assets/images/product/9.jpg" alt="product-img" />
+                                                                <img className="product-img-extra change" alt="product-img" src="./assets/images/product/10.jpg" />
                                                             </a>
                                                             <span className="outstock-overlay">SOLD OUT</span>
                                                         </div>
@@ -924,8 +924,8 @@ function AllProducts() {
                                                         </div>
                                                         <div className="image">
                                                             <a href="#" className="thumbnail product-thumbnail">
-                                                                <img src="assets/images/product/11.jpg" alt="product-img" />
-                                                                <img className="product-img-extra change" alt="product-img" src="assets/images/product/12.jpg" />
+                                                                <img src="./assets/images/product/11.jpg" alt="product-img" />
+                                                                <img className="product-img-extra change" alt="product-img" src="./assets/images/product/12.jpg" />
                                                             </a>
                                                         </div>
                                                         <div className="caption">
@@ -989,8 +989,8 @@ function AllProducts() {
                                                         </div>
                                                         <div className="image">
                                                             <a href="#" className="thumbnail product-thumbnail">
-                                                                <img src="assets/images/product/16.jpg" alt="product-img" />
-                                                                <img className="product-img-extra change" alt="product-img" src="assets/images/product/17.jpg" />
+                                                                <img src="./assets/images/product/16.jpg" alt="product-img" />
+                                                                <img className="product-img-extra change" alt="product-img" src="./assets/images/product/17.jpg" />
                                                             </a>
                                                         </div>
                                                         <div className="caption">

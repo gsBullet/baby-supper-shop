@@ -3,8 +3,13 @@ const router = express.Router();
 const {
     body
 } = require('express-validator');
+const { Error } = require('mongoose');
 const userController = require('../controller/user-controller');
 const userModel = require('../models/modelUser');
+const authMiddleWare = require('../middleware/middleWare')
+
+
+router.use(authMiddleWare);
 
 router.get('/all', userController.allUser);
 
@@ -24,49 +29,45 @@ router.post('/create',
     userController.createUser
 )
 
-router.get('/get/:email', userController.getUser);
-
-router.post('/update/:id', (req, res) => {
-    res.json(users);
-})
-
-router.get('/delete/:id', userController.deleteUser);
-
-
 router.post('/register',
     [
         // username must be an email
         body('email')
         .normalizeEmail()
-        // .isEmpty().withMessage('Email is empty')
         .isEmail().withMessage('Email is empty')
-        .custom((value,{req})=>{
-            userModel.findOne({
-                    email: value
-                })
-                .then(res=>{
-                    if(res){
-                        // throw new Error('Email is already exits');
-                    }
-                })
-        }).withMessage('Email is already exits'),
-
+        .custom(async (value,{req})=>{
+           let emailUser = await userModel.findOne({
+                email: value
+            })
+            if(emailUser){
+                return Promise.reject('Email is already exists')
+            }
+        }).withMessage('Email is already exists'),
+       
 
         // username must be a least 5 chars long
         body('username')
         .not().isEmpty().withMessage('username is required')
         .isLength({
-            min: 5
-        }),
+            min: 3
+        }).withMessage('minimun length 3 character')
+        .custom(async (value,{req})=>{
+           let user = await userModel.findOne({
+                username: value
+            })
+            if(user){
+                    return Promise.reject('user already exists')
+                }
+        }).withMessage('user already exists'),
 
 
 
-        // password must be a least 4 chars long
+        // password must be a least 3 chars long
         body('password')
         .not().isEmpty().withMessage('password is required')
         .isLength({
-            min: 4
-        }).withMessage('minmum length 5 character'),
+            min: 3
+        }).withMessage('minmum length 3 character'),
 
         body('repassword').custom((value, {req}) => {
             if (value !== req.body.password) {
@@ -76,5 +77,45 @@ router.post('/register',
         })
     ],
     userController.registerUser);
+
+    router.post('/login',
+    [
+        // username must be an email
+        body('email')
+        .normalizeEmail()
+        .isEmail().withMessage('Email is empty')
+        .custom(async (value,{req})=>{
+           let user = await userModel.findOne({
+                email: value
+            })
+            if(!user){
+                return Promise.reject('Email is not found')
+            }
+        }).withMessage('Email is not found'),
+
+        // password must be a least 3 chars long
+        body('password')
+        .not().isEmpty().withMessage('password is required')
+        .isLength({
+            min: 3
+        }).withMessage('minmum length 3 character'),
+ 
+    ],
+    userController.loginUser);
+
+
+
+
+router.get('/check-user', userController.checkUser);
+
+router.get('/get/:id', userController.getUser);
+
+router.post('/update/:id', (req, res) => {
+    res.json(users);
+})
+
+router.get('/delete/:id', userController.deleteUser);
+
+
 
 module.exports = router;

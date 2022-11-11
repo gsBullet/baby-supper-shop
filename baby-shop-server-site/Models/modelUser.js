@@ -19,6 +19,10 @@ const modelSchema = mongoose.Schema({
         required: true,
         type: "string",
     },
+    role: {
+        default:'customer',
+        type: "string",
+    },
 })
 
 const userModel = mongoose.model('userModel',modelSchema);

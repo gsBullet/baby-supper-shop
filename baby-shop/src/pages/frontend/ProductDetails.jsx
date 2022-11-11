@@ -216,12 +216,12 @@ function ProductDetails() {
                                                             </div>
                                                             <div className="col-xl-12 col-lg-12 col-md-12 paymentlogo-container">
                                                                 <span>Payment</span>
-                                                                <img src="assets/images/paymenticon/1.png" alt="Discover" />
-                                                                <img src="assets/images/paymenticon/2.png" alt="Visa" />
-                                                                <img src="assets/images/paymenticon/3.png" alt="JCB" />
-                                                                <img src="assets/images/paymenticon/4.png" alt="PayPal" />
-                                                                <img src="assets/images/paymenticon/5.png" alt="Master Card" />
-                                                                <img src="assets/images/paymenticon/6.png" alt="American Express" />
+                                                                <img src="./assets/images/paymenticon/1.png" alt="Discover" />
+                                                                <img src="./assets/images/paymenticon/2.png" alt="Visa" />
+                                                                <img src="./assets/images/paymenticon/3.png" alt="JCB" />
+                                                                <img src="./assets/images/paymenticon/4.png" alt="PayPal" />
+                                                                <img src="./assets/images/paymenticon/5.png" alt="Master Card" />
+                                                                <img src="./assets/images/paymenticon/6.png" alt="American Express" />
                                                             </div>
                                                         </div>
                                                         <div id="block-reassurance">

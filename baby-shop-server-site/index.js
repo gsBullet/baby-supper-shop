@@ -9,6 +9,7 @@
 
   const userRouter = require('./routers/user-router');
   const productsRouter = require('./routers/product-router');
+  const categoryRouter = require('./routers/category-router');
 
   app.set('json spaces', 4);
 
@@ -21,6 +22,7 @@
 
   app.use('/api/user', userRouter);
   app.use('/api/products', productsRouter);
+  app.use('/api/category', categoryRouter);
 
   mongoose
       .connect('mongodb+srv://Bullet_BRUR:glmbrurict@cluster0.0fsdqn6.mongodb.net/baby_shop_db?retryWrites=true&w=majority')

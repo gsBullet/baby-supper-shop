@@ -4,7 +4,7 @@ function Index() {
     return (
         <>
             <div className="container">
-                <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <div className="d-flex col-md-7  col-lg-8 justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 className="h2">Dashboard</h1>
                     <div className="btn-toolbar mb-2 mb-md-0">
                         <div className="btn-group mr-2">
@@ -16,7 +16,25 @@ function Index() {
                             This week
                         </button>
                     </div>
-                </div>
+                    </div>
+                    <div className='d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3'>
+                            <div className="card card-body">
+                                    <h2>
+                                         I am ready
+                                    </h2>
+                            </div>
+                            <div className="card card-body">
+                                    <h2>
+                                         I am ready
+                                    </h2>
+                            </div>
+                            <div className="card card-body">
+                                    <h2>
+                                         I am ready
+                                    </h2>
+                            </div>
+                    </div>
+               
 
             </div>
         </>

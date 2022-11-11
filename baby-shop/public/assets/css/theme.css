@@ -3088,7 +3088,7 @@
   position: relative;
   text-align: center;
   margin: 0 auto;
-  
+
 }
 
 .ishiservicesblock .ishiservices .services {
@@ -13529,7 +13529,7 @@ section.checkout-step .continue {
 @media (max-width: 767px) {
   .breadcrumb-container {
     padding: 30px 10px;
-    
+
   }
 }
 
@@ -16782,7 +16782,8 @@ div.required .control-label:before {
   transition: all 0.5s;
   /* cart */
 }
-.desktop_card{
+
+.desktop_card {
   /* border: 1px solid red; */
   width: auto;
   display: inline-block;

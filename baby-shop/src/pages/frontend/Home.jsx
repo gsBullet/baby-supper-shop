@@ -2819,7 +2819,7 @@ function Home() {
                                             </a>
                                             <div className="date-comment">
                                                 <span className="blog_date"> <i className="fa fa-calendar" /> 27 July 2020</span>
-                                                <span className="write-comment"> <a href="#"><i className="fa fa-comment" /> 1 Comments</a></span>
+                                                <span className="write-comment"> <a href="#"><i className="fa-brands fa-comment" /> 1 Comments</a></span>
                                             </div>
                                         </div>
                                         <div className="blog_content">
@@ -2877,22 +2877,22 @@ function Home() {
                                             <ul className="social-inner">
                                                 <li className="facebook">
                                                     <a href="#" target="_blank">
-                                                        <i className="fa fa-facebook" /><span className="socialicon-label">Facebook</span>
+                                                        <i className="fa-brands fa-facebook-f" /><span className="socialicon-label">Facebook</span>
                                                     </a>
                                                 </li>
                                                 <li className="twitter">
                                                     <a href="#" target="_blank">
-                                                        <i className="fa fa-twitter" /><span className="socialicon-label">Twitter</span>
+                                                        <i className="fa-brands fa-twitter" /><span className="socialicon-label">Twitter</span>
                                                     </a>
                                                 </li>
                                                 <li className="rss">
                                                     <a href="#" target="_blank">
-                                                        <i className="fa fa-pinterest-p" /><span className="socialicon-label">Pinterest</span>
+                                                        <i className="fa-brands fa-pinterest-p" /><span className="socialicon-label">Pinterest</span>
                                                     </a>
                                                 </li>
                                                 <li className="youtube">
                                                     <a href="#" target="_blank">
-                                                        <i className="fa fa-youtube" /><span className="socialicon-label">YouTube</span>
+                                                        <i className="fa-brands fa-youtube" /><span className="socialicon-label">YouTube</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -2901,12 +2901,12 @@ function Home() {
                                 </div>
                                 <div className="bannerimage bannerblock col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                     <a href="#" className="ishi-customhover-fadeinnormal scale">
-                                        <img src="assets/images/banner/6.png" alt="banner" className="img-responsive" />
+                                        <img src="./assets/images/banner/6.png" alt="banner" className="img-responsive" />
                                     </a>
                                 </div>
                             </div>
                         </section>
-                    </div>
+            </div>
 
         </>
     )

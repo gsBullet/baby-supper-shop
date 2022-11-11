@@ -1,9 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 function Register() {
 
     const [formErrors, setFormErrors] = useState()
+    const { checkAuth, setCheckAuth } = useContext(AuthContext);
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        if (checkAuth.isAuth) {
+            navigate('/')
+        }
+    }, [checkAuth]);
 
     const registrationHandler = (e) => {
         e.preventDefault();
@@ -20,26 +29,29 @@ function Register() {
         let formData = new FormData(e.target);
         setFormErrors({});
 
-        // console.log(formData);
+        console.log(formData);
 
-        fetch("http://localhost:5000/api/user/register", {
+        fetch("http://localhost:5000/api/user/register",{
             method: "POST",
             headers: {
                 // 'Content-Type': 'application/json'
                 // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             // body:JSON.stringify(info)
-            body: formData
+            body: formData,
 
         })
-            .then(async (res) => {
+        .then(async (res) => {
                 let data = await res.json();
+                console.log(data)
                 return {
                     status: res.status,
                     data
+                   
                 }
-            })
-            .then(res => {
+               ;
+        })
+        .then(res => {
                 console.log(res);
                 if (res.status === 422) {
                     let tempErrors = {
@@ -56,6 +68,19 @@ function Register() {
                         )
                     });
                     setFormErrors(tempErrors)
+                }
+                if(res.status === 201){
+                    e.target.reset();
+                    window.localStorage.setItem('token', res.data.token);
+                    setCheckAuth({
+                        isAuth: true,
+                        token: res.data.token,
+                        data:{
+                            email: res.data.email,
+                            username: res.data.username,
+                            role: res.data.role,
+                        }
+                    })
                 }
             })
 
@@ -135,7 +160,7 @@ function Register() {
                                                         Re password
                                                     </label>
                                                     <div className="col-md-9 col-sm-12">
-                                                        <input className="form-control" name="repassword" type="password" placeholder='Re type please' />
+                                                        <input className="form-control" name="repassword" type="password" placeholder='Re-type your password' />
                                                     </div>
                                                 </div>
                                                 <div className="form-group text-center">
