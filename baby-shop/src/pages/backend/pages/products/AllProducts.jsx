@@ -41,7 +41,7 @@ function AllProducts() {
                 <table className='table table-bordered text-center'>
                     <thead>
                         <tr>
-                            <th width={150} className='text-center'>SI</th>
+                            <th className='text-center'>SI</th>
                             <th className='text-center'>Title</th>
                             <th className='text-center'>Images</th>
                             <th className='text-center'>Category</th>
@@ -49,7 +49,7 @@ function AllProducts() {
                             <th className='text-center'>Discount</th>
                             <th className='text-center'>Discount Price</th>
                             <th className='text-center'>Creator</th>
-                            <th width={250} className='text-center'>Action</th>
+                            <th className='text-center'>Action</th>
 
                         </tr>
                     </thead>
