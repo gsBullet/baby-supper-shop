@@ -3,13 +3,15 @@ const router = express.Router();
 const {
     body
 } = require('express-validator');
-const { Error } = require('mongoose');
+const {
+    Error
+} = require('mongoose');
 const userController = require('../controller/user-controller');
 const userModel = require('../models/modelUser');
 const authMiddleWare = require('../middleware/middleWare')
 
 
-router.use(authMiddleWare);
+
 
 router.get('/all', userController.allUser);
 
@@ -35,15 +37,17 @@ router.post('/register',
         body('email')
         .normalizeEmail()
         .isEmail().withMessage('Email is empty')
-        .custom(async (value,{req})=>{
-           let emailUser = await userModel.findOne({
+        .custom(async (value, {
+            req
+        }) => {
+            let emailUser = await userModel.findOne({
                 email: value
             })
-            if(emailUser){
+            if (emailUser) {
                 return Promise.reject('Email is already exists')
             }
         }).withMessage('Email is already exists'),
-       
+
 
         // username must be a least 5 chars long
         body('username')
@@ -51,13 +55,15 @@ router.post('/register',
         .isLength({
             min: 3
         }).withMessage('minimun length 3 character')
-        .custom(async (value,{req})=>{
-           let user = await userModel.findOne({
+        .custom(async (value, {
+            req
+        }) => {
+            let user = await userModel.findOne({
                 username: value
             })
-            if(user){
-                    return Promise.reject('user already exists')
-                }
+            if (user) {
+                return Promise.reject('user already exists')
+            }
         }).withMessage('user already exists'),
 
 
@@ -69,7 +75,9 @@ router.post('/register',
             min: 3
         }).withMessage('minmum length 3 character'),
 
-        body('repassword').custom((value, {req}) => {
+        body('repassword').custom((value, {
+            req
+        }) => {
             if (value !== req.body.password) {
                 throw new Error('Password does not match');
             }
@@ -78,17 +86,19 @@ router.post('/register',
     ],
     userController.registerUser);
 
-    router.post('/login',
+router.post('/login',
     [
         // username must be an email
         body('email')
         .normalizeEmail()
         .isEmail().withMessage('Email is empty')
-        .custom(async (value,{req})=>{
-           let user = await userModel.findOne({
+        .custom(async (value, {
+            req
+        }) => {
+            let user = await userModel.findOne({
                 email: value
             })
-            if(!user){
+            if (!user) {
                 return Promise.reject('Email is not found')
             }
         }).withMessage('Email is not found'),
@@ -99,12 +109,12 @@ router.post('/register',
         .isLength({
             min: 3
         }).withMessage('minmum length 3 character'),
- 
+
     ],
     userController.loginUser);
 
 
-
+router.use(authMiddleWare);
 
 router.get('/check-user', userController.checkUser);
 

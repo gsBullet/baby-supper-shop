@@ -28,7 +28,11 @@ export {default as BackendOrderManagement} from './pages/order/OrderManagement';
 
 export {default as BackendAllCategory} from './pages/products/category/AllCategory';
 export {default as BackendCreateCategory} from './pages/products/category/CreateCategory';
+export {default as BackendEditCategory} from './pages/products/category/EditCategory';
+
+
 export {default as BackendAllProducts} from './pages/products/AllProducts';
+export {default as BackendCreateProducts} from './pages/products/CreateProducts';
 export {default as BackendReporting} from './pages/products/Reporting';
 
 

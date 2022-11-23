@@ -1,24 +1,45 @@
-    const express = require('express')
+    const express = require('express');
     const router = express.Router();
+    const productController = require('../controller/product-controller')
 
-    
-    router.get('/all', (req, res) => {
-    res.json('All products');
-    })
-    router.post('/create', (req, res) => {
-      res.json('create user');
-    })
-  
-    router.get('/get/:id', (req, res) => {
-      res.json('read user');
-    })
-    router.post('/update/:id', (req, res) => {
-      res.json('update user');
-    })
-  
-    router.get('/delete/:id/:name', (req, res) => {
-      // console.log(req);
-      res.json('delete user'+ ' '+ req.params.id+' ' + req.params.name);
-    })  
+    const {
+      check
+    } = require('express-validator');
+    const authMiddleWare = require('../middleware/middleWare');
+
+    router.use(authMiddleWare);
+
+    router.get('/all', productController.allProducts);
+    router.post('/create',
+    [
+      check('title')
+      .not().isEmpty().withMessage('title is required'),
+
+      check('price')
+      .not().isEmpty().withMessage('price is required'),
+
+      check('category')
+      .not().isEmpty().withMessage('category is required'),
+
+      check('image')
+      .custom((value, {req,res,next})=>{
+        
+        if(req.files.image.size == 0){
+            return Promise.reject('image field is required');
+        }
+        else{
+          return true
+        }
+      }),
+
+       check('description')
+      .not().isEmpty().withMessage('description is required'),
+      
+    ], productController.createProducts);
+
+    router.get('/get/:id', productController.getProducts);
+    router.post('/update/:id', productController.updateProducts);
+
+    router.get('/delete/:id/:name', productController.deleteProducts);
 
     module.exports = router;

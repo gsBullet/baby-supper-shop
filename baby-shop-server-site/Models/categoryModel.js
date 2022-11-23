@@ -5,14 +5,19 @@ const categorySchema = mongoose.Schema({
         required: true,
         type: "string",
     },
+     
      parent: {
-        default: 'none',
-        type: "string",
+        // type: "string"
+        type: mongoose.Types.ObjectId,
+        default: "none",
+        ref: "categoryModel"
+
     },
      creator: {
-        type: "string"
-    },
-    
+        // type: "string"
+        type: mongoose.Types.ObjectId,
+        ref: 'userModel'
+    }  
     
 },{
     timestamps: true

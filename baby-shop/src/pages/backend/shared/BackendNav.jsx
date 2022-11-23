@@ -6,9 +6,9 @@ function BackendNav() {
         <>
             <nav id="sidebarMenu" className="col-md-3 col-lg-3 d-md-block bg-light sidebar collapse">
                 <div className="sidebar-sticky col-lg-11">
-                    <div className='text-center'>
-                        <div className='rounded-circle overflow-hidden  border border-primary p-1'>
-                            <img className='rounded-circle border-primary img-fluid img-thumbnail' src="https://prodrive-technologies.com/media/ms3ohf5l/placeholderman.jpg?mode=crop&width=800&height=600" alt="" />
+                    <div className='text-center border rounded border-gray'>
+                        <div className='overflow-hidden p-3'>
+                            <img width={120} height={120} className='rounded-circle border-primary img-fluid img-thumbnail' src="https://prodrive-technologies.com/media/ms3ohf5l/placeholderman.jpg?mode=crop&width=800&height=600" alt="" />
                         </div>
                         <h4 className='m-2'>
                         <i className='fas fa-user'></i> &nbsp;

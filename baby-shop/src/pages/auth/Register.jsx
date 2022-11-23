@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/AuthContext';
 
 function Register() {
 
-    const [formErrors, setFormErrors] = useState()
+    const [formErrors, setFormErrors] = useState();
     const { checkAuth, setCheckAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -43,13 +43,12 @@ function Register() {
         })
         .then(async (res) => {
                 let data = await res.json();
-                console.log(data)
+                // console.log(data);
                 return {
                     status: res.status,
                     data
                    
-                }
-               ;
+                };
         })
         .then(res => {
                 console.log(res);
@@ -67,7 +66,7 @@ function Register() {
                             </li>
                         )
                     });
-                    setFormErrors(tempErrors)
+                    setFormErrors(tempErrors);
                 }
                 if(res.status === 201){
                     e.target.reset();

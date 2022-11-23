@@ -18,7 +18,7 @@ function CreateCategory() {
         })
             .then(res => res.json())
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setData(res);
             })
     }
@@ -38,7 +38,7 @@ function CreateCategory() {
         })
             .then(res => res.json())
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 window.alert('category successfuly created');
                 e.target.reset();
             })
@@ -49,7 +49,7 @@ function CreateCategory() {
                 <h4 className='m-0'>Create Category</h4>
                 <div>
                     <Link to="/dashboard/categories"
-                        className='btn btn-sm btn-info'>
+                        className='btn btn-sm btn-info rounded'>
                         <i className='fas fa-arrow-left'></i> Back
                     </Link>
                 </div>
@@ -91,4 +91,4 @@ function CreateCategory() {
     )
 }
 
-export default CreateCategory
+export default CreateCategory;

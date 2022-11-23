@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FrontendLayout from "./pages/layout/FrontendLayout";
 import BackendLayout from "./pages/layout/BackendLayout";
 import { FrontentAboutUs, FrontentAllProducts, FrontentCard, FrontentContact, FrontentHome, FrontentNotFound, FrontentProductDetails, FrontentProfile, FrontentProfileCardList, FrontentProfileDashboard, FrontentProfileLogout, FrontentProfileOrderList, FrontentProfilePayment, FrontentProfileSettings, FrontentProfileWishList } from "./pages/frontend/FrontendPagesList";
-import { BackendAdvertise, BackendAllBlogs, BackendAllCategory, BackendAllProducts, BackendBanners, BackendBasicInfo, BackendBlogCategory, BackendBlogManagements, BackendBrands, BackendComments, BackendCreateCategory, BackendDiscountProduct, BackendFeatures, BackendIndex, BackendOrderManagement, BackendReporting, BackendReview, BackendUserManagement } from "./pages/backend/BackendPagesList";
+import { BackendAdvertise, BackendAllBlogs, BackendAllCategory, BackendAllProducts, BackendBanners, BackendBasicInfo, BackendBlogCategory, BackendBlogManagements, BackendBrands, BackendComments, BackendCreateCategory, BackendCreateProducts, BackendDiscountProduct, BackendEditCategory, BackendFeatures, BackendIndex, BackendOrderManagement, BackendReporting, BackendReview, BackendUserManagement } from "./pages/backend/BackendPagesList";
 import { createContext } from "react";
 import SettingContextProvider from "./context/SettingContext";
 import AuthContextProvider from "./context/AuthContext";
@@ -66,8 +66,10 @@ function App() {
 
                     <Route path="categories" element={<BackendAllCategory/>}/>
                     <Route path="categories/create" element={<BackendCreateCategory/>}/>
+                    <Route path="categories/edit/:id/:title" element={<BackendEditCategory/>}/>
 
                     <Route path="all-products" element={<BackendAllProducts/>}/>
+                    <Route path="create-products" element={<BackendCreateProducts/>}/>
                     <Route path="reporting" element={<BackendReporting/>}/>
 
                     

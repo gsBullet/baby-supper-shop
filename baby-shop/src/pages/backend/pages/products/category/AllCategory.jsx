@@ -19,9 +19,28 @@ function AllCategory() {
         })
             .then(res => res.json())
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setData(res);
+               
             })
+    }
+
+    const deleteItem = (e,id)=>{
+            e.preventDefault();
+            if(window.confirm('Are you sure to Delete Item ?')){
+                fetch('http://localhost:5000/api/category/delete', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        authorization: 'Bearer ' + window.localStorage.getItem('token')
+                    },
+                    body: JSON.stringify({ id })
+                })
+                .then(res=>res.json())
+                .then(res=>{
+                    getCategory();
+                })
+            }
     }
 
     return (
@@ -30,7 +49,7 @@ function AllCategory() {
                 <h4 className='m-0'>All Category</h4>
                 <div>
                     <Link to="/dashboard/categories/create"
-                        className='btn btn-sm btn-info'>
+                        className='btn btn-sm btn-info rounded'>
                         <i className='fas fa-plus'></i> Create
                     </Link>
                 </div>
@@ -42,6 +61,8 @@ function AllCategory() {
                             <th className='text-center'>SI</th>
                             <th className='text-center'>Title</th>
                             <th className='text-center'>Product</th>
+                            <th className='text-center'>parent</th>
+                            <th className='text-center'>Creator</th>
                             <th style={{ width: '250px' }} className='text-center'>Action</th>
                         </tr>
                     </thead>
@@ -52,12 +73,15 @@ function AllCategory() {
                                     <tr key={i._id}>
                                         <td>{i._id}</td>
                                         <td>{i.title}</td>
+                                        
                                         <td>0</td>
+                                        <td>{i.parent?.title}</td>
+                                        <td>{i.creator?.username}</td>
                                         <td>
                                             <div className='d-flex gap-1 flex-wrap justify-content-end'>
-                                                <a href="#" className='btn btn-sm btn-info'>details</a>
-                                                <a href="#" className='btn btn-sm btn-warning'>edit</a>
-                                                <a href="#" className='btn btn-sm btn-danger'>delete</a>
+                                                <a href="#" className='btn btn-sm btn-info rounded'>details</a>
+                                                <Link to={`/dashboard/categories/edit/${i._id}/${encodeURI(i.title.replaceAll(' ', '-'))}`} className='btn btn-sm btn-warning rounded'>edit</Link>
+                                                <a onClick={(e) => deleteItem(e, i._id)} href="#" className='btn btn-sm btn-danger rounded'>delete</a>
                                             </div>
                                         </td>
                                     </tr>

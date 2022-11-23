@@ -19,6 +19,7 @@
   }))
   app.use(formData.parse());
   app.use(cors());
+  app.use('/uploads',express.static('uploads'))
 
   app.use('/api/user', userRouter);
   app.use('/api/products', productsRouter);
