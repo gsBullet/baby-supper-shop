@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import httpRequest from '../../../../../hooks/httpRequest';
 
 function AllCategory() {
     const [data, setData] = useState([]);
@@ -11,32 +12,18 @@ function AllCategory() {
     }, [])
 
     const getCategory = () => {
-        fetch('http://localhost:5000/api/category/all', {
-            method: "GET",
-            headers: {
-                authorization: 'Bearer ' + window.localStorage.getItem('token')
-            },
-        })
-            .then(res => res.json())
+        httpRequest('/category/all')
             .then(res => {
-                // console.log(res);
-                setData(res);
-               
+                setData(res.data);
             })
     }
 
     const deleteItem = (e,id)=>{
             e.preventDefault();
             if(window.confirm('Are you sure to Delete Item ?')){
-                fetch('http://localhost:5000/api/category/delete', {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        authorization: 'Bearer ' + window.localStorage.getItem('token')
-                    },
-                    body: JSON.stringify({ id })
+                httpRequest('/category/delete','POST', JSON.stringify({id}),{
+                    'Content-Type' : 'Application/json'
                 })
-                .then(res=>res.json())
                 .then(res=>{
                     getCategory();
                 })

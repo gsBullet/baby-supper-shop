@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FrontendLayout from "./pages/layout/FrontendLayout";
 import BackendLayout from "./pages/layout/BackendLayout";
 import { FrontentAboutUs, FrontentAllProducts, FrontentCard, FrontentContact, FrontentHome, FrontentNotFound, FrontentProductDetails, FrontentProfile, FrontentProfileCardList, FrontentProfileDashboard, FrontentProfileLogout, FrontentProfileOrderList, FrontentProfilePayment, FrontentProfileSettings, FrontentProfileWishList } from "./pages/frontend/FrontendPagesList";
-import { BackendAdvertise, BackendAllBlogs, BackendAllCategory, BackendAllProducts, BackendBanners, BackendBasicInfo, BackendBlogCategory, BackendBlogManagements, BackendBrands, BackendComments, BackendCreateCategory, BackendCreateProducts, BackendDiscountProduct, BackendEditCategory, BackendFeatures, BackendIndex, BackendOrderManagement, BackendReporting, BackendReview, BackendUserManagement } from "./pages/backend/BackendPagesList";
+import { BackendAdvertise, BackendAllBlogs, BackendAllCategory, BackendAllProducts, BackendBanners, BackendBasicInfo, BackendBlogCategory, BackendBlogManagements, BackendBrands, BackendComments, BackendCreateCategory, BackendCreateProducts, BackendDiscountProduct, BackendEditCategory, BackendFeatures, BackendIndex, BackendOrderManagement, BackendProductDetails, BackendProductUpdate, BackendReporting, BackendReview, BackendUserManagement } from "./pages/backend/BackendPagesList";
 import { createContext } from "react";
 import SettingContextProvider from "./context/SettingContext";
 import AuthContextProvider from "./context/AuthContext";
@@ -10,14 +10,38 @@ import { AuthForgetPassword, AuthLogin, AuthRegister } from "./pages/auth/AuthPa
 // import AuthRoute from "./routes/AuthRoute";
 import AuthCustomerRoute from "./routes/AuthCustomerRoute";
 import AuthAdminRoute from "./routes/AuthAdminRoute";
+import httpRequest from "./hooks/httpRequest";
 
 export const storeContext = createContext(null);
 
 
 
 function App() {
+  const api_test = ()=>{
+    let formData = new FormData(document.getElementById('form_data'));
+    httpRequest(
+      '/test_post',
+      'POST',
+      JSON.stringify({
+        val1: 4343,
+        val2: 5656,
+        val3:1212
+      }),
+      {
+        'Content-Type': 'application/json'
+      }
+      )
+      .then(res=>{
+        console.log(res);
+      });
+  }
   return (
     <SettingContextProvider>
+      <form id="form_data" action="">
+        <input type="text" name="test1" value={1234} />
+        <input type="text" name="test2" value={5678}/>
+      </form>
+      <button onClick={api_test}>test</button>
       <AuthContextProvider>
         <BrowserRouter>
             <Routes>
@@ -69,11 +93,10 @@ function App() {
                     <Route path="categories/edit/:id/:title" element={<BackendEditCategory/>}/>
 
                     <Route path="all-products" element={<BackendAllProducts/>}/>
+                    <Route path="product/details/:id" element={<BackendProductDetails/>}/>
+                    <Route path="product/update/:id/:title" element={<BackendProductUpdate/>}/>
                     <Route path="create-products" element={<BackendCreateProducts/>}/>
                     <Route path="reporting" element={<BackendReporting/>}/>
-
-                    
-
                 </Route>    
             </Routes>
         </BrowserRouter>

@@ -29,9 +29,12 @@ const productSchema = mongoose.Schema({
     discount_date:{
         type:'date',
     },
-     image:{
+    thumb_image:{
         required: true,
         type:'string',
+    },
+    related_image:{
+        type:'array',
     },
     description:{
         required: true,

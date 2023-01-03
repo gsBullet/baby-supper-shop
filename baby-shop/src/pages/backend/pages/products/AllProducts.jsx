@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import httpRequest from '../../../../hooks/httpRequest';
 // import { getProducts } from '../../../../../../baby-shop-server-site/controller/product-controller';
 
 function AllProducts() {
@@ -13,16 +14,20 @@ function AllProducts() {
     }, [])
 
     const getAllProducts = () => {
-        fetch(`http://localhost:5000/api/products/all`, {
-            method: "GET",
-            headers: {
-                authorization: 'Bearer ' + window.localStorage.getItem('token')
-            },
-        })
-            .then(res => res.json())
+        httpRequest('/products/all')
             .then(res => {
-                setData(res);
+                setData(res.data);
             })
+    }
+
+    const deleteHandler = (id)=>{
+        httpRequest('/products/delete','POST', JSON.stringify({id}),{
+            'Content-Type' : 'Application/json'
+        })
+        .then(res => {
+           let temp = [...data].filter(i=> i._id!==id);
+           setData(temp);
+        })
     }
 
     return (
@@ -61,7 +66,18 @@ function AllProducts() {
                                         <td>{i._id}</td>
                                         <td>{i.title}</td>
                                         <td>
-                                            <img src={'http://localhost:5000/'+i.image} style={{ width: 100 }} />
+                                            <img src={process.env.REACT_APP_SERVER_URL+'/' + i.thumb_image} style={{ width: 100,height:60 }} />
+                                            <ul className='d-flex' style={{ gap: "5px" }}>
+                                                {
+                                                    i.related_image?.map((image, index) => {
+                                                        return (
+                                                            <li key={index}>
+                                                                <img src={process.env.REACT_APP_SERVER_URL+'/' + image} style={{ width: 30 }} />
+                                                            </li>
+                                                        )
+                                                    })
+                                                }
+                                            </ul>
                                         </td>
                                         <td>{i.category.title}</td>
                                         <td>{i.price}</td>
@@ -70,9 +86,9 @@ function AllProducts() {
                                         <td>{i.creator.username}</td>
                                         <td>
                                             <div className='d-flex flex-wrap justify-content-end' style={{ gap: '5px' }}>
-                                                <a href="#" className='btn btn-sm btn-info rounded'> details</a>
-                                                <Link to="#" className='btn btn-sm btn-warning rounded'> edit</Link>
-                                                <a href="#" className='btn btn-sm btn-danger rounded'> delete</a>
+                                                <Link to={`/dashboard/product/details/${i._id}`} className='btn btn-sm btn-info rounded'> details</Link>
+                                                <Link to={`/dashboard/product/update/${i._id}/${i.title}`} className='btn btn-sm btn-warning rounded'> edit</Link>
+                                                <a onClick={deleteHandler(i._id)} href="#" className='btn btn-sm btn-danger rounded'> delete</a>
                                             </div>
                                         </td>
                                     </tr>

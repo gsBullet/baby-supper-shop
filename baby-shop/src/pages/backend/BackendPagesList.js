@@ -21,9 +21,7 @@ export {default as BackendFeatures} from './pages/frontendManagement/Features';
 export {default as BackendReview} from './pages/frontendManagement/Review';
 
 
-
 export {default as BackendOrderManagement} from './pages/order/OrderManagement';
-
 
 
 export {default as BackendAllCategory} from './pages/products/category/AllCategory';
@@ -32,6 +30,8 @@ export {default as BackendEditCategory} from './pages/products/category/EditCate
 
 
 export {default as BackendAllProducts} from './pages/products/AllProducts';
+export {default as BackendProductDetails} from './pages/products/ProductDetails';
+export {default as BackendProductUpdate} from './pages/products/UpdateProducts';
 export {default as BackendCreateProducts} from './pages/products/CreateProducts';
 export {default as BackendReporting} from './pages/products/Reporting';
 

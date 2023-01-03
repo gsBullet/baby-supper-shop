@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import httpRequest from '../../hooks/httpRequest';
 
 function Register() {
 
@@ -17,41 +18,12 @@ function Register() {
     const registrationHandler = (e) => {
         e.preventDefault();
 
-        // let info = {
-        //     Userame: e.target.username.value,
-        //     Email: e.target.email.value,
-        //     Password: e.target.password.value,
-        //     Repassword: e.target.repassword.value
-
-        // }
-        // console.log(e.target);
-
         let formData = new FormData(e.target);
         setFormErrors({});
 
         console.log(formData);
-
-        fetch("http://localhost:5000/api/user/register",{
-            method: "POST",
-            headers: {
-                // 'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            // body:JSON.stringify(info)
-            body: formData,
-
-        })
-        .then(async (res) => {
-                let data = await res.json();
-                // console.log(data);
-                return {
-                    status: res.status,
-                    data
-                   
-                };
-        })
+        httpRequest('/user/register', 'POST', new FormData(e.target))
         .then(res => {
-                console.log(res);
                 if (res.status === 422) {
                     let tempErrors = {
                         username: [],

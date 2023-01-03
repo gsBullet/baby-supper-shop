@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import httpRequest from '../../../../../hooks/httpRequest';
 
 function EditCategory() {
 
@@ -12,28 +13,16 @@ function EditCategory() {
         getCategoryById();
     }, [])
     const getCategoryById = () => {
-        fetch('http://localhost:5000/api/category/get/' + id, {
-            method: "GET",
-            headers: {
-                authorization: 'Bearer ' + window.localStorage.getItem('token')
-            },
-        })
-            .then(res => res.json())
+        httpRequest('/category/get/'+ id)
             .then(res => {
-                setCategory(res);
+                setCategory(res.data);
             })
     }
     const getCategory = () => {
-        fetch('http://localhost:5000/api/category/all', {
-            method: "GET",
-            headers: {
-                authorization: 'Bearer ' + window.localStorage.getItem('token')
-            },
-        })
-            .then(res => res.json())
+        httpRequest('/category/all')
             .then(res => {
                 // console.log(res);
-                setData(res);
+                setData(res.data);
             })
     }
 
@@ -43,18 +32,9 @@ function EditCategory() {
 
         let formData = new FormData(e.target);
         formData.append('id', id);
-        fetch('http://localhost:5000/api/category/update', {
-            method: "POST",
-            headers: {
-                authorization: 'Bearer ' + window.localStorage.getItem('token')
-            },
-            body: formData,
-        })
-            .then(res => res.json())
+        httpRequest('/category/update', 'POST', formData)
             .then(res => {
-                // console.log(res);
                 window.alert('category successfuly updated');
-                // e.target.reset();
                 getCategoryById();
                 getCategory();
             })

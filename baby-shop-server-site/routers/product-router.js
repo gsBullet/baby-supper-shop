@@ -21,11 +21,11 @@
       check('category')
       .not().isEmpty().withMessage('category is required'),
 
-      check('image')
+      check('thumb_image')
       .custom((value, {req,res,next})=>{
         
-        if(req.files.image.size == 0){
-            return Promise.reject('image field is required');
+        if(req.files.thumb_image.size == 0){
+            return Promise.reject('Thumb Image field is required');
         }
         else{
           return true
@@ -38,8 +38,24 @@
     ], productController.createProducts);
 
     router.get('/get/:id', productController.getProducts);
-    router.post('/update/:id', productController.updateProducts);
 
-    router.get('/delete/:id/:name', productController.deleteProducts);
+    router.post('/update',
+    [
+      check('title')
+      .not().isEmpty().withMessage('title is required'),
+
+      check('price')
+      .not().isEmpty().withMessage('price is required'),
+
+      check('category')
+      .not().isEmpty().withMessage('category is required'),
+
+
+       check('description')
+      .not().isEmpty().withMessage('description is required'),
+      
+    ], productController.updateProducts);
+
+    router.post('/delete', productController.deleteProducts);
 
     module.exports = router;

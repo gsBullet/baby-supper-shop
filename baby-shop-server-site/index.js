@@ -1,7 +1,7 @@
   const express = require('express')
   const mongoose = require('mongoose');
   const app = express()
-  const port = 5000
+  const port = 3002
 
   const bodyParser = require('body-parser');
   const cors = require('cors');
@@ -24,6 +24,9 @@
   app.use('/api/user', userRouter);
   app.use('/api/products', productsRouter);
   app.use('/api/category', categoryRouter);
+  app.post('/api/test_post',(req,res)=>{
+    res.json(req.body);
+  })
 
   mongoose
       .connect('mongodb+srv://Bullet_BRUR:glmbrurict@cluster0.0fsdqn6.mongodb.net/baby_shop_db?retryWrites=true&w=majority')

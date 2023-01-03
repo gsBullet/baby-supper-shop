@@ -42,8 +42,7 @@ const  allCategory = async(req, res, next) => {
     let categories = await categoryModel.find()
     .populate('parent')
     .populate('creator');
-    return res.status(200).json(categories);
-    
+    return res.status(200).json(categories); 
  }
 const updateCategory = async (req,res,next) => {
     const {
@@ -55,7 +54,7 @@ const updateCategory = async (req,res,next) => {
     },
     {
         title,
-         parent
+        parent
     });
     return res.status(200).json(category);
 }
@@ -70,8 +69,8 @@ const deleteCategory = async (req,res,next) => {
         return res.status(200).json("delete Item");
 
     }else{
-
-        return res.status(200).json({msg:'does not delete Item', category});
+        return res.status(400).json({
+            msg:'does not delete Item', category});
     }
 }
 

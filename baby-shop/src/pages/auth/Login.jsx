@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext';
+import httpRequest from '../../hooks/httpRequest';
 
 function Login() {
     const [formErrors, setFormErrors] = useState();
@@ -31,22 +32,8 @@ function Login() {
         e.preventDefault();
 
         setFormErrors({});
-        // console.log(e.target);
-
-        fetch("http://localhost:5000/api/user/login", {
-            method: "POST",
-            body: new FormData(e.target)
-
-        })
-            .then(async (res) => {
-                let data = await res.json();
-                return {
-                    status: res.status,
-                    data
-                }
-            })
+        httpRequest('/user/login','POST', new FormData(e.target))
             .then(res => {
-                // console.log(res);
                 if (res.status === 422) {
                     let tempErrors = {
                         username: [],

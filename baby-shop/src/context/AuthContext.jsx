@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
 import { useEffect } from 'react';
+import httpRequest from '../hooks/httpRequest';
 
 
 export const AuthContext = createContext(null);
@@ -19,22 +20,16 @@ function AuthContextProvider({ children }) {
         setData({ ...data });
     }
     async function check_user(params) {
-        let req = await fetch("http://localhost:5000/api/user/check-user", {
-            headers: {
-                Authorization: 'Bearer ' + window.localStorage.getItem('token')
-            }
-        });
-
-        let res = await req.json();
-        let status = await req.status;
+        let res = await httpRequest('/user/check-user');
+        let status = await res.status;
         if (status == 200) {
             setCheckAuth({
                 isAuth: true,
                 token: window.localStorage.getItem('token'),
                 data:{
-                    email: res.email,
-                    username: res.username,
-                    role: res.role,
+                    email: res.data.email,
+                    username: res.data.username,
+                    role: res.data.role,
                 }
             })
         } else {

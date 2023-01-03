@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import httpRequest from '../../../../../hooks/httpRequest';
 
 function CreateCategory() {
 
@@ -10,16 +11,9 @@ function CreateCategory() {
     }, [])
 
     const getCategory = () => {
-        fetch('http://localhost:5000/api/category/all', {
-            method: "GET",
-            headers: {
-                authorization: 'Bearer ' + window.localStorage.getItem('token')
-            },
-        })
-            .then(res => res.json())
+        httpRequest('/category/all')
             .then(res => {
-                // console.log(res);
-                setData(res);
+                setData(res.data);
             })
     }
 
@@ -28,17 +22,8 @@ function CreateCategory() {
         e.preventDefault();
 
         let formData = new FormData(e.target);
-
-        fetch('http://localhost:5000/api/category/create', {
-            method: "POST",
-            headers: {
-                authorization: 'Bearer ' + window.localStorage.getItem('token')
-            },
-            body: formData,
-        })
-            .then(res => res.json())
+        httpRequest('/category/create','POST', formData)
             .then(res => {
-                // console.log(res);
                 window.alert('category successfuly created');
                 e.target.reset();
             })

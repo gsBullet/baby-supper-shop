@@ -3,11 +3,12 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Editor } from '@tinymce/tinymce-react';
+import httpRequest from '../../../../hooks/httpRequest';
 
 function CreateProducts() {
     const [formErrors, setFormErrors] = useState();
     const [categories, setCategories] = useState([]);
-    const [previewImage, setPreviewImage] = useState([]);
+    const [previewImage, setPreviewImage] = useState({});
 
     const editorRef = useRef(null);
     const discount_field = useRef(null);
@@ -20,16 +21,9 @@ function CreateProducts() {
     }, [])
 
     const getCategory = () => {
-        fetch('http://localhost:5000/api/category/all', {
-            method: "GET",
-            headers: {
-                authorization: 'Bearer ' + window.localStorage.getItem('token')
-            },
-        })
-            .then(res => res.json())
+        httpRequest('/category/all')
             .then(res => {
-                // console.log(res);
-                setCategories(res);
+                setCategories(res.data);
             })
     }
     const submitHandler = (e) => {
@@ -38,25 +32,8 @@ function CreateProducts() {
 
         let formData = new FormData(e.target);
         formData.append('description', editorRef.current.getContent());
-
-        fetch(`http://localhost:5000/api/products/create`, {
-            method: "POST",
-            headers: {
-                authorization: 'Bearer ' + window.localStorage.getItem('token')
-            },
-            body: formData,
-        })
-            .then(async (res) => {
-                let data = await res.json();
-                // console.log(data);
-                return {
-                    status: res.status,
-                    data
-
-                };
-            })
+        httpRequest('/products/create','POST', formData)
             .then(res => {
-                // console.log(res);
                 if (res.status === 422) {
                     let tempErrors = {
                         title: [],
@@ -75,55 +52,52 @@ function CreateProducts() {
                     setFormErrors(tempErrors);
                 }
                 if (res.status === 201) {
-                    console.log(res);
                     e.target.reset();
                     window.alert("New Product Created");
                 }
             })
     }
-
-    // const log = () => {
-    //     if (editorRef.current) {
-    //         console.log(editorRef.current.getContent());
-    //     }
-    // }
-
     const discountHandler = () => {
         let discount = +discount_field.current.value;
         let price = +price_field.current.value;
-        if(discount >= 100){
+        if (discount >= 100) {
             discount_field.current.value = 100;
-            discount =100;
+            discount = 100;
         }
-        if(discount <= 0){
+        if (discount <= 0) {
             discount_field.current.value = 0;
         }
-        if(discount > 0){
-            let discount_price = price - ((price*discount)/100);
+        if (discount > 0) {
+            let discount_price = price - ((price * discount) / 100);
             discount_price_field.current.value = discount_price;
             // console.log(price, discount,discount_price);
         }
-        else{
+        else {
             discount_field.current.value = '';
             discount_price_field.current.value = ''
             // price_field.current.value = '';
         }
-       
+
     }
 
-    const previewHandler = async (e) =>{
-        let files =await e.target.files;
-        let tempImages = [];
-        let index = 1;
-        for (const element of files) {
-                tempImages.push(
-                <img key={index++} 
-                style={{width:30, margin:5}} 
-                src={window.URL.createObjectURL(element)} />
-            )
+    const previewHandler = async (e, type) => {
+        let files = await e.target.files;
+        let tempImages = {...previewImage};
+        if (type === 'related_image') {
+            tempImages.related_image= [];
+            let index = 1;
+            for (const element of files) {
+                tempImages.related_image.push(
+                    <img key={index++}
+                        style={{ width: 30, margin: 5 }}
+                        src={window.URL.createObjectURL(element)} />
+                )
+            }
+        }
+        if(type === 'thumb_image'){
+            tempImages.thumb_image = <img height={120} width={120} src={window.URL.createObjectURL(e.target.files[0])} />
         }
         setPreviewImage(tempImages);
-        console.log(files);
     }
     return (
         <div className="card">
@@ -183,23 +157,32 @@ function CreateProducts() {
                     </div>
                     <div className="form-group mb-3">
                         <label htmlFor="">Discount Date</label> <br />
-                        <input className='form-control' type="date" name='discount_data' placeholder='Discount date' />
+                        <input className='form-control' type="date" name='discount_date' placeholder='Discount date' />
                         <ul>
                             {formErrors?.discount_date}
                         </ul>
                     </div>
                     <div className="form-group mb-3">
-                        <label htmlFor="">Image</label> <br />
+                        <label htmlFor="">Thumb Image</label> <br />
                         <input
-                            onChange={previewHandler}
+                            onChange={(e) => previewHandler(e, 'thumb_image')}
+                            type="file"
+                            className='form-control'
+                            name='thumb_image' />
+                        {previewImage?.thumb_image}
+                        <ul>
+                            {formErrors?.thumb_image}
+                        </ul>
+                    </div>
+                    <div className="form-group mb-3">
+                        <label htmlFor="">Related Image</label> <br />
+                        <input
+                            onChange={(e) => previewHandler(e, 'related_image')}
                             type="file"
                             multiple
                             className='form-control'
-                            name='image[]' />
-                            {previewImage}
-                        <ul>
-                            {formErrors?.image}
-                        </ul>
+                            name='related_image[]' />
+                        {previewImage?.related_image}
                     </div>
                     <div className="form-group mb-3">
                         <label htmlFor="">Description</label> <br />
