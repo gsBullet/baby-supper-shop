@@ -11,46 +11,51 @@ import { AuthForgetPassword, AuthLogin, AuthRegister } from "./pages/auth/AuthPa
 import AuthCustomerRoute from "./routes/AuthCustomerRoute";
 import AuthAdminRoute from "./routes/AuthAdminRoute";
 import httpRequest from "./hooks/httpRequest";
+// import AsignContextProvider from "./context/FrontendContext";
+import FrontendContextProvider from "./context/FrontendContext";
 
 export const storeContext = createContext(null);
 
 
 
 function App() {
-  const api_test = ()=>{
-    let formData = new FormData(document.getElementById('form_data'));
-    httpRequest(
-      '/test_post',
-      'POST',
-      JSON.stringify({
-        val1: 4343,
-        val2: 5656,
-        val3:1212
-      }),
-      {
-        'Content-Type': 'application/json'
-      }
-      )
-      .then(res=>{
-        console.log(res);
-      });
-  }
+  // const api_test = ()=>{
+  //   let formData = new FormData(document.getElementById('form_data'));
+  //   httpRequest(
+  //     '/test_post',
+  //     'POST',
+  //     JSON.stringify({
+  //       val1: 4343,
+  //       val2: 5656,
+  //       val3:1212
+  //     }),
+  //     {
+  //       'Content-Type': 'application/json'
+  //     }
+  //     )
+  //     .then(res=>{
+  //       console.log(res);
+  //     });
+  // }
   return (
     <SettingContextProvider>
-      <form id="form_data" action="">
-        <input type="text" name="test1" value={1234} />
-        <input type="text" name="test2" value={5678}/>
-      </form>
-      <button onClick={api_test}>test</button>
       <AuthContextProvider>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<FrontendLayout/>}>
+                <Route path="/" element={
+                  
+                  <FrontendContextProvider>
+                    <FrontendLayout/>
+                </FrontendContextProvider>
+              
+                }>
+
                     <Route index element={<FrontentHome/>}/>
                     <Route path="allproducts" element={<FrontentAllProducts/>}/>
                     <Route path="product-details" element={<FrontentProductDetails/>}/>
                     <Route path="card" element={<FrontentCard/>}/> 
-                    <Route path="contact" element={<FrontentContact/>}/>
+                    <Route path="contact" element={<FrontentContact/>}
+                    />
 
                     <Route path="profile" element={<AuthCustomerRoute><FrontentProfile/></AuthCustomerRoute>}>
                       <Route index element={<FrontentProfileCardList/>}/>

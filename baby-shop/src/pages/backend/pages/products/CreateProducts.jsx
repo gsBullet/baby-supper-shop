@@ -209,7 +209,7 @@ function CreateProducts() {
                             {formErrors?.description}
                         </ul>
                     </div>
-                    <button className='btn btn-secondary'>Submit</button>
+                    <button onSubmit={submitHandler} className='btn btn-secondary'>Submit</button>
                 </form>
             </div>
         </div>

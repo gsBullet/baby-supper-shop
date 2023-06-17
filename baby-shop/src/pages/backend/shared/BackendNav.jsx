@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function BackendNav() {
     return (
         <>
-            <nav id="sidebarMenu" className="col-md-3 col-lg-3 d-md-block bg-light sidebar collapse">
+            <nav id="sidebarMenu" className="col-md-3 col-lg-3 d-md-block bg-light sidebar show">
                 <div className="sidebar-sticky col-lg-11">
                     <div className='text-center border rounded border-gray'>
                         <div className='overflow-hidden p-3'>

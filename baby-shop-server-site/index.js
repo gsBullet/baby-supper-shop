@@ -1,7 +1,7 @@
   const express = require('express')
   const mongoose = require('mongoose');
   const app = express()
-  const port = 3002
+  const port = 5003
 
   const bodyParser = require('body-parser');
   const cors = require('cors');
@@ -15,28 +15,45 @@
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
-      extended: false
+      extended: false,
+      limit: "50mb"
   }))
   app.use(formData.parse());
   app.use(cors());
-  app.use('/uploads',express.static('uploads'))
+  app.use('/uploads', express.static('uploads'))
 
+
+  // app.get('/test',(req,res)=>{
+  //   setTimeout(() => {
+  //     res.status(200).json('got it from server');
+  //   }, 2000);
+  // })
   app.use('/api/user', userRouter);
   app.use('/api/products', productsRouter);
   app.use('/api/category', categoryRouter);
-  app.post('/api/test_post',(req,res)=>{
-    res.json(req.body);
-  })
+  // app.post('/api/test_post', (req, res) => {
+  //     res.json(req.body);
+  // })
+
+  let terminal_loader_trigger = require('./hooks/loader');
+//   process.stdout.write("\n 📮  connecting mongodb\n");
+  terminal_loader_trigger = terminal_loader_trigger();
 
   mongoose
       .connect('mongodb+srv://Bullet_BRUR:glmbrurict@cluster0.0fsdqn6.mongodb.net/baby_shop_db?retryWrites=true&w=majority')
       .then(() => {
-          console.log("mongoose connect succesfull");
-          app.listen(port, () => {
-              console.log(`Example app listening on port ${port}`)
-          })
+            terminal_loader_trigger.stop_loader();
+            console.log('\x1b[93m',`\n mongoose connected \n`);
+            app.listen(port, () => {
+                process.stdout.write(` 📮 server listening port`)
+                console.log('\x1b[94m',`http://localhost:${port}`);
+            })
 
       })
       .catch((err) => {
-          console.log(err);
+        terminal_loader_trigger.stop_loader();
+          console.log('\x1b[31m',`\n ✂️  mongoose connected rejected`);
+
       })
+
+

@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Nav from './Nav';
+import useFrontendContext from '../../../hooks/useFrontendContext';
+import resourcelink from '../../../hooks/resourcelink';
 
 
 function Header() {
+    const {state, dispatch} = useFrontendContext();
+    const {cards}=state;
     return (
         <>
             <header id="header" className="home">
@@ -57,133 +61,71 @@ function Header() {
                             {/* --------------------desktop_logo------------ */}
                             <div id="desktop_logo" className="col-lg-3 col-md-5 col-sm-12 col-xs-12">
                                 <Link to="/">
-                                    <img className="logo img-responsive" src="./assets/images/header-logo.png" alt="Demo Shop" />
+                                    <img className="logo img-responsive" src="/assets/images/header-logo.png" alt="Demo Shop" />
                                 </Link>
                             </div>
                             <div className="header-top-right offset-xl-2 col-xl-7 col-lg-9 col-md-7 col-sm-12 col-xs-12">
                                 {/* --------------------services------------ */}
                                 <div id="ishiservices" className="ishiservicesblock">
                                     {/* -------------------shopping cart----------- */}
-                                    <div id="_desktop_cart" className='desktop_card'>
+                                    <div id="_desktop_cart" className='desktop_card '>
                                         <div className="blockcart cart-preview inactive">
                                             <div className="header">
                                                 <span className="cart-link">
-                                                    <span className="cart-img">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" style={{ display: 'none' }}>
-                                                            <symbol id="shopping-cart" viewBox="0 0 850 850"><title>shopping-cart</title>
-                                                                <path d="M194.59,382.711c-35.646,0-64.646,29-64.646,64.646s29,64.646,64.646,64.646c35.646,0,64.646-29,64.646-64.646
-                            S230.235,382.711,194.59,382.711z M194.59,473.215c-14.261,0-25.858-11.597-25.858-25.858c0-14.261,11.597-25.858,25.858-25.858
-                            c14.254,0,25.858,11.597,25.858,25.858C220.448,461.617,208.851,473.215,194.59,473.215z" />
-                                                                <path d="M385.941,382.711c-35.646,0-64.646,29-64.646,64.646s29,64.646,64.646,64.646c35.646,0,64.646-29,64.646-64.646
-                            S421.587,382.711,385.941,382.711z M385.941,473.215c-14.261,0-25.858-11.597-25.858-25.858
-                            c0-14.261,11.597-25.858,25.858-25.858c14.261,0,25.858,11.597,25.858,25.858C411.799,461.617,400.202,473.215,385.941,473.215z" />
-                                                                <path d="M498.088,126.274c-3.685-4.629-9.27-7.324-15.179-7.324H143.326l-17.629-89.095c-1.545-7.803-7.699-13.873-15.528-15.308
-                            L32.594,0.325C22.038-1.621,11.953,5.368,10.02,15.905s5.042,20.641,15.58,22.574l64.607,11.843l56.914,287.667
-                            c1.797,9.083,9.768,15.631,19.025,15.631h271.512c9.031,0,16.86-6.225,18.896-15.037l45.252-195.876
-                            C503.137,136.947,501.767,130.896,498.088,126.274z M422.233,314.833H182.074l-31.075-157.089h307.519L422.233,314.833z" />
-                                                            </symbol>
-                                                        </svg>
-                                                        <svg className="icon" viewBox="0 0 40 40"><use xlinkHref="#shopping-cart" x="15%" y="18%" /></svg>
-                                                    </span>
+                                                    
                                                     <span className="cart-content">
+                                                        
                                                         <span className="cart-name">
-                                                            <span className="cart-products-count">3</span> items
+                                                           <span className='p-1'>
+                                                           <i className='fa fa-shopping-cart'></i>
+                                                           </span>
+                                                            <span className="cart-products-count">{cards.length}</span> items
                                                         </span>
-                                                        <span className="cart-products-count hidden-lg-up">3</span>
+                                                        <span className="cart-products-count hidden-lg-up">{cards.length}</span>
                                                     </span>
                                                 </span>
-                                                {/* <div className="cart-dropdown">
-                                                    <div className="product-container">
-                                                        <div className="product">
-                                                            <a className="product-image" href="#">
-                                                                <img src="./assets/images/product/1.jpg" alt="Simul dolorem voluptaria" />
-                                                            </a>
-                                                            <div className="product-detail">
-                                                                <div className="product-name">
-                                                                    <span className="quantity-formated">
-                                                                        <span className="quantity">1</span>
-                                                                        &nbsp;x&nbsp;
-                                                                    </span>
-                                                                    <a className="cart_block_product_name" href="#">Simul dolorem voluptaria</a>
-                                                                </div>
-                                                                <div className="price">$16.51</div>
-                                                                <ul className="product-atributes">
-                                                                    <li className="atributes">
-                                                                        <span className="label">Size:</span>
-                                                                        <span className="value">S</span>
-                                                                    </li>
-                                                                    <li className="atributes">
-                                                                        <span className="label">Color:</span>
-                                                                        <span className="value">Orange</span>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <div className="remove-product">
-                                                                <a className="remove-from-cart" rel="nofollow" href="#">
-                                                                    <i className="material-icons">delete</i>
+                                                <div className="cart-dropdown product-top-merge">
+                                                    <div className="product-container ">
+                                                        {
+                                                            cards.map((product,index)=>{
+                                                                return <div key={index} className="product">
+                                                                <a className="product-image" href="#">
+                                                                    <img src={resourcelink(product.thumb_image)} alt="Simul dolorem voluptaria" />
                                                                 </a>
-                                                            </div>
-                                                        </div>
-                                                        <div className="product">
-                                                            <a className="product-image" href="#">
-                                                                <img src="assets/images/product/3.jpg" alt="Omnis dicam mentitum" />
-                                                            </a>
-                                                            <div className="product-detail">
-                                                                <div className="product-name">
-                                                                    <span className="quantity-formated">
-                                                                        <span className="quantity">1</span>
-                                                                        &nbsp;x&nbsp;
-                                                                    </span>
-                                                                    <a className="cart_block_product_name" href="#">Omnis dicam mentitum</a>
+                                                                <div className="product-detail">
+                                                                    <div className="product-name">
+                                                                        <span className="quantity-formated">
+                                                                            <span className="quantity">1</span>
+                                                                            &nbsp;x&nbsp;
+                                                                        </span>
+                                                                        <a className="cart_block_product_name" href="#">
+                                                                            {product.title}
+                                                                        </a>
+                                                                    </div>
+                                                                    <div className="price">${product.price}</div>
+                                                                    <ul className="product-atributes">
+                                                                        <li className="atributes">
+                                                                            <span className="label">Size:</span>
+                                                                            <span className="value">S</span>
+                                                                        </li>
+                                                                        <li className="atributes">
+                                                                            <span className="label">Color:</span>
+                                                                            <span className="value">Orange</span>
+                                                                        </li>
+                                                                    </ul>
                                                                 </div>
-                                                                <div className="price">$25.99</div>
-                                                                <ul className="product-atributes">
-                                                                    <li className="atributes">
-                                                                        <span className="label">Size:</span>
-                                                                        <span className="value">S</span>
-                                                                    </li>
-                                                                    <li className="atributes">
-                                                                        <span className="label">Color:</span>
-                                                                        <span className="value">Orange</span>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <div className="remove-product">
-                                                                <a className="remove-from-cart" rel="nofollow" href="#">
-                                                                    <i className="material-icons">delete</i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div className="product">
-                                                            <a className="product-image" href="#">
-                                                                <img src="assets/images/product/5.jpg" alt="Eled doming deserunt" />
-                                                            </a>
-                                                            <div className="product-detail">
-                                                                <div className="product-name">
-                                                                    <span className="quantity-formated">
-                                                                        <span className="quantity">1</span>
-                                                                        &nbsp;x&nbsp;
-                                                                    </span>
-                                                                    <a className="cart_block_product_name" href="#">Eled doming deserunt</a>
+                                                                <div className="remove-product">
+                                                                    <a className="remove-from-cart" 
+                                                                    onClick={()=>dispatch({fn:null, type:'removeCard', payload:{index}})}
+                                                                    rel="nofollow" href="#">
+                                                                        <i className="material-icons">delete</i>
+                                                                    </a>
                                                                 </div>
-                                                                <div className="price">$28.98</div>
-                                                                <ul className="product-atributes">
-                                                                    <li className="atributes">
-                                                                        <span className="label">Size:</span>
-                                                                        <span className="value">S</span>
-                                                                    </li>
-                                                                    <li className="atributes">
-                                                                        <span className="label">Color:</span>
-                                                                        <span className="value">Yellow</span>
-                                                                    </li>
-                                                                </ul>
                                                             </div>
-                                                            <div className="remove-product">
-                                                                <a className="remove-from-cart" rel="nofollow" href="#">
-                                                                    <i className="material-icons">delete</i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
+                                                            })
+                                                        }
+                                                        
+                                                       
                                                     </div>
                                                     <div className="billing-info">
                                                         <div className="billing subtotal-info">
@@ -206,7 +148,7 @@ function Header() {
                                                     <div className="cart-btn col-xs-12">
                                                         <a href="checkoutpage.html" className="btn btn-primary checkout">Checkout</a>
                                                     </div>
-                                                </div> */}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

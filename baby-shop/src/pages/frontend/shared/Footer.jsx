@@ -11,7 +11,7 @@ function Footer() {
                                     <div id="ishistoreinfo" className="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                         <div id="ishistoreinfo-container" className="ishistoreinfo-inner">
                                             <a href="index.html" className="store-logo">
-                                                <img src="assets/images/footer-logo.png" alt="footer-logo" />
+                                                <img src="/assets/images/footer-logo.png" alt="footer-logo" />
                                             </a>
                                             <div className="store-description">
                                                 <p>This is Photoshops version of Lorem fenIpsum. Proin gravida nibh sagitt sem nibh id elit.Proin gravida nibh sagitt sem nibh id elit.</p>
@@ -136,12 +136,12 @@ function Footer() {
                                     <div className="col-lg-6 col-xs-12">
                                         {/* -------------------payment block---------- */}
                                         <div className="paymentlogo-container">
-                                            <img src="./assets/images/paymenticon/1.png" alt="Discover" />
-                                            <img src="./assets/images/paymenticon/2.png" alt="Visa" />
-                                            <img src="./assets/images/paymenticon/3.png" alt="JCB" />
-                                            <img src="./assets/images/paymenticon/4.png" alt="PayPal" />
-                                            <img src="./assets/images/paymenticon/5.png" alt="Master Card" />
-                                            <img src="./assets/images/paymenticon/6.png" alt="American Express" />
+                                            <img src="/assets/images/paymenticon/1.png" alt="Discover" />
+                                            <img src="/assets/images/paymenticon/2.png" alt="Visa" />
+                                            <img src="/assets/images/paymenticon/3.png" alt="JCB" />
+                                            <img src="/assets/images/paymenticon/4.png" alt="PayPal" />
+                                            <img src="/assets/images/paymenticon/5.png" alt="Master Card" />
+                                            <img src="/assets/images/paymenticon/6.png" alt="American Express" />
                                         </div>
                                     </div>
                                     <div id="ishispecialdeals-icon">
@@ -151,7 +151,7 @@ function Footer() {
                                                     <div className="row">
                                                         <div className="image col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                             <a href="#" className="thumbnail product-thumbnail">
-                                                                <img src="./assets/images/product/1.jpg" alt="product-img" />
+                                                                <img src="/assets/images/product/1.jpg" alt="product-img" />
                                                                 <img className="product-img-extra change" alt="product-img" src="./assets/images/product/2.jpg" />
                                                             </a>
                                                         </div>

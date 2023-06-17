@@ -9,6 +9,10 @@
 
     router.use(authMiddleWare);
 
+    router.get('/list', productController.allProducts);
+
+
+
     router.get('/all', productController.allProducts);
     router.post('/create',
     [

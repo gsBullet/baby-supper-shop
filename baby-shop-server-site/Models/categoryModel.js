@@ -9,19 +9,19 @@ const categorySchema = mongoose.Schema({
      parent: {
         // type: "string"
         type: mongoose.Types.ObjectId,
-        default: "none",
-        ref: "categoryModel"
+        // default: "none",
+        ref: "category"
 
     },
      creator: {
         // type: "string"
         type: mongoose.Types.ObjectId,
-        ref: 'userModel'
+        ref: 'user'
     }  
     
 },{
     timestamps: true
 })
 
-const categoryModel = mongoose.model('categoryModel',categorySchema);
+const categoryModel = mongoose.model('category',categorySchema);
 module.exports = categoryModel;

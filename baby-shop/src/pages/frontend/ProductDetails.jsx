@@ -51,26 +51,26 @@ function ProductDetails() {
                                                 <div className="images-container">
                                                     <div className="product-cover">
                                                         <div id="product-zoom">
-                                                            <img className="js-qv-product-cover" src="assets/images/product/1.jpg" alt="product-image" title="product-image" style={{ width: '100%' }} />
+                                                            <img className="js-qv-product-cover" src="/assets/images/product/1.jpg" alt="product-image" title="product-image" style={{ width: '100%' }} />
                                                         </div>
                                                     </div>
                                                     <div className="col-md-12">
                                                         <div className="js-qv-mask mask">
                                                             <ul className="qv-carousel product-images owl-carousel">
                                                                 <li className="thumb-container item">
-                                                                    <img className="thumb js-thumb  selected " src="assets/images/product/2.jpg" alt="related-items" title data-image-large-src="assets/images/product/2.jpg" width={100} itemProp="image" />
+                                                                    <img className="thumb js-thumb  selected " src="/assets/images/product/2.jpg" alt="related-items" title data-image-large-src="assets/images/product/2.jpg" width={100} itemProp="image" />
                                                                 </li>
                                                                 <li className="thumb-container item">
-                                                                    <img className="thumb js-thumb " src="assets/images/product/3.jpg" alt="related-items" title data-image-large-src="assets/images/product/3.jpg" width={100} itemProp="image" />
+                                                                    <img className="thumb js-thumb " src="/assets/images/product/3.jpg" alt="related-items" title data-image-large-src="assets/images/product/3.jpg" width={100} itemProp="image" />
                                                                 </li>
                                                                 <li className="thumb-container item">
-                                                                    <img className="thumb js-thumb " src="assets/images/product/5.jpg" alt="related-items" title data-image-large-src="assets/images/product/5.jpg" width={100} itemProp="image" />
+                                                                    <img className="thumb js-thumb " src="/assets/images/product/5.jpg" alt="related-items" title data-image-large-src="assets/images/product/5.jpg" width={100} itemProp="image" />
                                                                 </li>
                                                                 <li className="thumb-container item">
-                                                                    <img className="thumb js-thumb " src="assets/images/product/6.jpg" alt="related-items" title data-image-large-src="assets/images/product/6.jpg" width={100} itemProp="image" />
+                                                                    <img className="thumb js-thumb " src="/assets/images/product/6.jpg" alt="related-items" title data-image-large-src="assets/images/product/6.jpg" width={100} itemProp="image" />
                                                                 </li>
                                                                 <li className="thumb-container item">
-                                                                    <img className="thumb js-thumb " src="assets/images/product/7.jpg" alt="related-items" title data-image-large-src="assets/images/product/7.jpg" width={100} itemProp="image" />
+                                                                    <img className="thumb js-thumb " src="/assets/images/product/7.jpg" alt="related-items" title data-image-large-src="assets/images/product/7.jpg" width={100} itemProp="image" />
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -216,12 +216,12 @@ function ProductDetails() {
                                                             </div>
                                                             <div className="col-xl-12 col-lg-12 col-md-12 paymentlogo-container">
                                                                 <span>Payment</span>
-                                                                <img src="./assets/images/paymenticon/1.png" alt="Discover" />
-                                                                <img src="./assets/images/paymenticon/2.png" alt="Visa" />
-                                                                <img src="./assets/images/paymenticon/3.png" alt="JCB" />
-                                                                <img src="./assets/images/paymenticon/4.png" alt="PayPal" />
-                                                                <img src="./assets/images/paymenticon/5.png" alt="Master Card" />
-                                                                <img src="./assets/images/paymenticon/6.png" alt="American Express" />
+                                                                <img src="/assets/images/paymenticon/1.png" alt="Discover" />
+                                                                <img src="/assets/images/paymenticon/2.png" alt="Visa" />
+                                                                <img src="/assets/images/paymenticon/3.png" alt="JCB" />
+                                                                <img src="/assets/images/paymenticon/4.png" alt="PayPal" />
+                                                                <img src="/assets/images/paymenticon/5.png" alt="Master Card" />
+                                                                <img src="/assets/images/paymenticon/6.png" alt="American Express" />
                                                             </div>
                                                         </div>
                                                         <div id="block-reassurance">
@@ -285,7 +285,7 @@ function ProductDetails() {
                                                     <div className="tab-pane fade" id="product-details" role="tabpanel">
                                                         <div className="product-manufacturer">
                                                             <a href="#">
-                                                                <img src="assets/images/product-brandlogo.png" className="img img-thumbnail manufacturer-logo" alt="Fashion Manufacturer 1" />
+                                                                <img src="/assets/images/product-brandlogo.png" className="img img-thumbnail manufacturer-logo" alt="Fashion Manufacturer 1" />
                                                             </a>
                                                         </div>
                                                         <div className="product-reference">
@@ -382,8 +382,8 @@ function ProductDetails() {
                                                             </div>
                                                             <div className="image">
                                                                 <a href="#" className="thumbnail product-thumbnail">
-                                                                    <img src="assets/images/product/9.jpg" alt="product-img" />
-                                                                    <img className="product-img-extra change" alt="product-img" src="assets/images/product/10.jpg" />
+                                                                    <img src="/assets/images/product/9.jpg" alt="product-img" />
+                                                                    <img className="product-img-extra change" alt="product-img" src="/assets/images/product/10.jpg" />
                                                                 </a>
                                                                 <span className="outstock-overlay">SOLD OUT</span>
                                                             </div>
@@ -450,8 +450,8 @@ function ProductDetails() {
                                                             </div>
                                                             <div className="image">
                                                                 <a href="#" className="thumbnail product-thumbnail">
-                                                                    <img src="assets/images/product/11.jpg" alt="product-img" />
-                                                                    <img className="product-img-extra change" alt="product-img" src="assets/images/product/12.jpg" />
+                                                                    <img src="/assets/images/product/11.jpg" alt="product-img" />
+                                                                    <img className="product-img-extra change" alt="product-img" src="/assets/images/product/12.jpg" />
                                                                 </a>
                                                             </div>
                                                             <div className="caption">
@@ -516,8 +516,8 @@ function ProductDetails() {
                                                             </div>
                                                             <div className="image">
                                                                 <a href="#" className="thumbnail product-thumbnail">
-                                                                    <img src="assets/images/product/16.jpg" alt="product-img" />
-                                                                    <img className="product-img-extra change" alt="product-img" src="assets/images/product/17.jpg" />
+                                                                    <img src="/assets/images/product/16.jpg" alt="product-img" />
+                                                                    <img className="product-img-extra change" alt="product-img" src="/assets/images/product/17.jpg" />
                                                                 </a>
                                                             </div>
                                                             <div className="caption">
@@ -583,8 +583,8 @@ function ProductDetails() {
                                                             </div>
                                                             <div className="image">
                                                                 <a href="#" className="thumbnail product-thumbnail">
-                                                                    <img src="assets/images/product/18.jpg" alt="product-img" />
-                                                                    <img className="product-img-extra change" alt="product-img" src="assets/images/product/19.jpg" />
+                                                                    <img src="/assets/images/product/18.jpg" alt="product-img" />
+                                                                    <img className="product-img-extra change" alt="product-img" src="/assets/images/product/19.jpg" />
                                                                 </a>
                                                             </div>
                                                             <div className="caption">
@@ -649,8 +649,8 @@ function ProductDetails() {
                                                             </div>
                                                             <div className="image">
                                                                 <a href="#" className="thumbnail product-thumbnail">
-                                                                    <img src="assets/images/product/20.jpg" alt="product-img" />
-                                                                    <img className="product-img-extra change" alt="product-img" src="assets/images/product/1.jpg" />
+                                                                    <img src="/assets/images/product/20.jpg" alt="product-img" />
+                                                                    <img className="product-img-extra change" alt="product-img" src="/assets/images/product/1.jpg" />
                                                                 </a>
                                                                 <div className="product-flags">
                                                                     <div className="sale">Sale</div>
@@ -728,8 +728,8 @@ function ProductDetails() {
                                                             </div>
                                                             <div className="image">
                                                                 <a href="#" className="thumbnail product-thumbnail">
-                                                                    <img src="assets/images/product/1.jpg" alt="product-img" />
-                                                                    <img className="product-img-extra change" alt="product-img" src="assets/images/product/2.jpg" />
+                                                                    <img src="/assets/images/product/1.jpg" alt="product-img" />
+                                                                    <img className="product-img-extra change" alt="product-img" src="/assets/images/product/2.jpg" />
                                                                 </a>
                                                                 <div className="product-flags">
                                                                     <div className="sale">Sale</div>
@@ -799,8 +799,8 @@ function ProductDetails() {
                                                             </div>
                                                             <div className="image">
                                                                 <a href="#" className="thumbnail product-thumbnail">
-                                                                    <img src="assets/images/product/8.jpg" alt="product-img" />
-                                                                    <img className="product-img-extra change" alt="product-img" src="assets/images/product/9.jpg" />
+                                                                    <img src="/assets/images/product/8.jpg" alt="product-img" />
+                                                                    <img className="product-img-extra change" alt="product-img" src="/assets/images/product/9.jpg" />
                                                                 </a>
                                                                 <div className="product-flags">
                                                                     <div className="sale">Sale</div>
@@ -870,8 +870,8 @@ function ProductDetails() {
                                                             </div>
                                                             <div className="image">
                                                                 <a href="#" className="thumbnail product-thumbnail">
-                                                                    <img src="assets/images/product/14.jpg" alt="product-img" />
-                                                                    <img className="product-img-extra change" alt="product-img" src="assets/images/product/15.jpg" />
+                                                                    <img src="/assets/images/product/14.jpg" alt="product-img" />
+                                                                    <img className="product-img-extra change" alt="product-img" src="/assets/images/product/15.jpg" />
                                                                 </a>
                                                                 <div className="product-flags">
                                                                     <div className="sale">Sale</div>
@@ -941,8 +941,8 @@ function ProductDetails() {
                                                             </div>
                                                             <div className="image">
                                                                 <a href="#" className="thumbnail product-thumbnail">
-                                                                    <img src="assets/images/product/5.jpg" alt="product-img" />
-                                                                    <img className="product-img-extra change" alt="product-img" src="assets/images/product/6.jpg" />
+                                                                    <img src="/assets/images/product/5.jpg" alt="product-img" />
+                                                                    <img className="product-img-extra change" alt="product-img" src="/assets/images/product/6.jpg" />
                                                                 </a>
                                                                 <div className="product-flags">
                                                                     <div className="sale">Sale</div>
@@ -1012,8 +1012,8 @@ function ProductDetails() {
                                                             </div>
                                                             <div className="image">
                                                                 <a href="#" className="thumbnail product-thumbnail">
-                                                                    <img src="assets/images/product/16.jpg" alt="product-img" />
-                                                                    <img className="product-img-extra change" alt="product-img" src="assets/images/product/17.jpg" />
+                                                                    <img src="/assets/images/product/16.jpg" alt="product-img" />
+                                                                    <img className="product-img-extra change" alt="product-img" src="/assets/images/product/17.jpg" />
                                                                 </a>
                                                                 <div className="product-flags">
                                                                     <div className="sale">Sale</div>

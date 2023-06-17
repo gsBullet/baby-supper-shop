@@ -60,7 +60,7 @@ function AllProducts() {
                     </thead>
                     <tbody>
                         {
-                            data.map((i, index) => {
+                            data.map((i,index) => {
                                 return (
                                     <tr key={index}>
                                         <td>{i._id}</td>
@@ -83,12 +83,12 @@ function AllProducts() {
                                         <td>{i.price}</td>
                                         <td>{i.discount}</td>
                                         <td>{i.discount_price}</td>
-                                        <td>{i.creator.username}</td>
+                                        <td>{i.username}</td>
                                         <td>
                                             <div className='d-flex flex-wrap justify-content-end' style={{ gap: '5px' }}>
                                                 <Link to={`/dashboard/product/details/${i._id}`} className='btn btn-sm btn-info rounded'> details</Link>
                                                 <Link to={`/dashboard/product/update/${i._id}/${i.title}`} className='btn btn-sm btn-warning rounded'> edit</Link>
-                                                <a onClick={deleteHandler(i._id)} href="#" className='btn btn-sm btn-danger rounded'> delete</a>
+                                                <a onClick={()=>deleteHandler(i._id)} href="#" className='btn btn-sm btn-danger rounded'> delete</a>
                                             </div>
                                         </td>
                                     </tr>

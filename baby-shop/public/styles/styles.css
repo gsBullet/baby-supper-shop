@@ -10,3 +10,6 @@
 .notFound img {
   width: 500px;
 }
+.product-top-merge {
+  z-index: 999999 !important;
+}

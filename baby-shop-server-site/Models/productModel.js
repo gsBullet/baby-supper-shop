@@ -10,7 +10,7 @@ const productSchema = mongoose.Schema({
         require:true,
         type: mongoose.Types.ObjectId,
         default: "none",
-        ref: "categoryModel"
+        ref: "category"
 
     },
      price: {
@@ -42,7 +42,7 @@ const productSchema = mongoose.Schema({
     },
     creator:{
         type: mongoose.Types.ObjectId,
-        ref: 'userModel'
+        ref: 'user'
     }
     
 },{

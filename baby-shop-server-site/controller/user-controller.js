@@ -65,7 +65,8 @@ async function checkUser(req, res, next) {
         username: user.username,
         email: user.email,
         role: user.role,
-        phone: user.phone
+        phone: user.phone,
+        // user
     });
 }
 

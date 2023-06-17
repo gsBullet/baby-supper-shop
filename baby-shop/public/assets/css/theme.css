@@ -16632,7 +16632,7 @@ div.required .control-label:before {
 }
 
 .nav-full-width .container .row {
-  display: block;
+  display: inline-block;
 }
 
 @media (max-width: 991px) {
@@ -16641,7 +16641,7 @@ div.required .control-label:before {
   }
 
   .nav-full-width .container .row {
-    display: block;
+    display: inline-block;
   }
 }
 
@@ -16653,7 +16653,7 @@ div.required .control-label:before {
   right: 0;
   text-align: center;
   margin: 0 auto;
-  z-index: 99;
+  z-index: 01;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   animation: slide-down 0.7s;
   -moz-animation: slide-down 0.7s;

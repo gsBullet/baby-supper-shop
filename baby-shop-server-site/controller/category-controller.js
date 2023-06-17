@@ -7,12 +7,14 @@ const categoryModel = require('../Models/categoryModel');
 
 async function createCategory(req, res, next) {
     // Finds the validation errors in this request and wraps them in an object with handy functions
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(422).json({
-            errors: errors.array()
-        });
-    }
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //     return res.status(422).json({
+    //         errors: errors.array()
+    //     });
+    // }
+
+    // console.log(req.body);
 
     const {
         title,
@@ -21,10 +23,14 @@ async function createCategory(req, res, next) {
 
     let newCategory = await new categoryModel({
         title,
-        parent,
+        // parent,
         creator: req.userData._id,
     }).save();
 
+    if(parent!="none"){
+        newCategory.parent= parent;
+       await newCategory.save()
+    }
     return res.json(newCategory);
 }
 
@@ -54,7 +60,7 @@ const updateCategory = async (req,res,next) => {
     },
     {
         title,
-        parent
+        // parent
     });
     return res.status(200).json(category);
 }

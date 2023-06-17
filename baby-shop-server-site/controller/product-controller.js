@@ -156,7 +156,7 @@ const deleteProducts = async (req, res, next) => {
         id,
     } = req.body;
     let products = await productModel.deleteOne({
-        _id: id
+        _id:id
     });
     if (products.deletedCount) {
         return res.status(200).json("delete Item");
