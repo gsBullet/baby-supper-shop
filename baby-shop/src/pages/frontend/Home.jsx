@@ -11,7 +11,7 @@ function Home() {
     useEffect(() => {
       httpRequest('/products/list')
       .then(res=>{
-        // console.log(res);
+        console.log(res);
         setProducts((products)=> products = res.data)
       })
     }, [])

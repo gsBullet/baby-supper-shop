@@ -6,8 +6,8 @@ import resourcelink from '../../../hooks/resourcelink';
 
 
 function Header() {
-    const {state, dispatch} = useFrontendContext();
-    const {cards}=state;
+    const {state, dispatch} = useFrontendContext()
+    const {cards}=state
     return (
         <>
             <header id="header" className="home">
@@ -72,9 +72,7 @@ function Header() {
                                         <div className="blockcart cart-preview inactive">
                                             <div className="header">
                                                 <span className="cart-link">
-                                                    
-                                                    <span className="cart-content">
-                                                        
+                                                    <span className="cart-content">  
                                                         <span className="cart-name">
                                                            <span className='p-1'>
                                                            <i className='fa fa-shopping-cart'></i>
@@ -95,7 +93,7 @@ function Header() {
                                                                 <div className="product-detail">
                                                                     <div className="product-name">
                                                                         <span className="quantity-formated">
-                                                                            <span className="quantity">1</span>
+                                                                            <span className="quantity">{product.qty}</span>
                                                                             &nbsp;x&nbsp;
                                                                         </span>
                                                                         <a className="cart_block_product_name" href="#">

@@ -47,6 +47,7 @@ function ProductsItem({ product,index}) {
                             <div className='text-right'>
                                 <button onClick={()=>dispatch({fn:null, type:'insertCard', payload:{product}})} className='btn btn-success rounded'> 
                                 <i className='fa fa-shopping-cart'></i>
+                                
                                 </button>
                             </div>
                         </div>

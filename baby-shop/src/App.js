@@ -10,7 +10,7 @@ import { AuthForgetPassword, AuthLogin, AuthRegister } from "./pages/auth/AuthPa
 // import AuthRoute from "./routes/AuthRoute";
 import AuthCustomerRoute from "./routes/AuthCustomerRoute";
 import AuthAdminRoute from "./routes/AuthAdminRoute";
-import httpRequest from "./hooks/httpRequest";
+// import httpRequest from "./hooks/httpRequest";
 // import AsignContextProvider from "./context/FrontendContext";
 import FrontendContextProvider from "./context/FrontendContext";
 
@@ -19,24 +19,7 @@ export const storeContext = createContext(null);
 
 
 function App() {
-  // const api_test = ()=>{
-  //   let formData = new FormData(document.getElementById('form_data'));
-  //   httpRequest(
-  //     '/test_post',
-  //     'POST',
-  //     JSON.stringify({
-  //       val1: 4343,
-  //       val2: 5656,
-  //       val3:1212
-  //     }),
-  //     {
-  //       'Content-Type': 'application/json'
-  //     }
-  //     )
-  //     .then(res=>{
-  //       console.log(res);
-  //     });
-  // }
+ 
   return (
     <SettingContextProvider>
       <AuthContextProvider>

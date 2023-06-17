@@ -9,7 +9,10 @@ const reducers = (state, { type, payload }) => {
         case 'insertCard':
             // console.log(payload);
             const {_id, price,title,thumb_image} = payload.product;
-            cards.push({_id, price,title,thumb_image});
+            // cards.push({_id, price,title,thumb_image});
+            let qty=1;
+            cards.unshift({_id, price,title,thumb_image,qty});
+            window.s_alert('product added to successfully');
             return tempState;
         case 'removeCard':
             cards.splice(payload.index, 1)
