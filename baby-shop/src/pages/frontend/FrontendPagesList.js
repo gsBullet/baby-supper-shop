@@ -18,3 +18,4 @@ export {default as FrontentProfileWishList} from './profilePages/WishList';
 
 export {default as FrontentAboutUs} from './AboutUs';
 export {default as FrontentNotFound} from './NotFound';
+

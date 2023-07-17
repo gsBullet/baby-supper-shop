@@ -17,25 +17,25 @@ function terminal_loader_trigger(){
 
     let i =0;
     let myload = "❗️";
-    let color = "\033[94m";
+    let color = "\x1b[94m";
     let loader_interval = setInterval(() => {
         if (i <= 25) {
-            color="\033[31m";
+            color="\x1b[31m";
             process.stdout.write(color);
             
         }
         else if (i <= 50) {
-            color="\033[93m";
+            color="\x1b[93m";
             process.stdout.write(color);
             
         }
         else if (i <= 75) {
-            color="\033[35m";
+            color="\x1b[35m";
             process.stdout.write(color);
             
         }
         else if (i <= 100) {
-            color="\033[94m";
+            color="\x1b[94m";
             process.stdout.write(color);
             
         }

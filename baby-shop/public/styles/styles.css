@@ -10,6 +10,37 @@
 .notFound img {
   width: 500px;
 }
-.product-top-merge {
-  z-index: 999999 !important;
+.backendHeader {
+  width: 100%;
+  z-index: 9999;
+}
+.blockcart {
+  position: relative;
+}
+.blockcart .cart-dropdown {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
+}
+.ishiservicesblock {
+  overflow: unset;
+}
+.blockcart:hover .cart-dropdown {
+  top: 115%;
+  visibility: visible;
+  right: 0px;
+  opacity: 1;
+  background-color: #d3d9db;
+  position: absolute;
+  z-index: 999999999;
+  box-shadow: 6px -8px 39px 7px rgba(0, 0, 0, 0.49) inset;
+  -webkit-box-shadow: 6px -8px 39px 7px rgba(0, 0, 0, 0.49) inset;
+  -moz-box-shadow: 6px -8px 39px 7px rgba(0, 0, 0, 0.49) inset;
+}
+table tr th,
+table tr td {
+  text-align: center;
 }

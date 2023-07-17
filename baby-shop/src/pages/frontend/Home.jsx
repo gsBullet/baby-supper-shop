@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import httpRequest from '../../hooks/httpRequest';
 import ProductsItem from './components/ProductsItem';
+// import WishList from './profilePages/WishList';
 // import { json } from 'react-router-dom';
 
 
 function Home() {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
       httpRequest('/products/list')
@@ -18,7 +19,7 @@ function Home() {
     
     return (
         <>
-            <div id="top_home" className='container'>
+            <div id="top_home" className='container text-center'>
                         {/* -------------------slider----------- */}
                         <section id="ishislider" className="ishislider-container owl-carousel">
                             <div className="item">
@@ -148,7 +149,6 @@ function Home() {
                             <div className="tab-content">
                                 {/* <div id="featured-products-block" className="tab-pane active"> */}
                                     <div className="row">
-                                        {/* <div id="ishi-featured-products" className="owl-carousel "> */}
                                             {
                                                 products.map((product,index)=>{
                                                     return <div key={index} className='col-md-4'>
@@ -383,7 +383,6 @@ function Home() {
                                                     </div>
                                                 </div>
                                             </div> */}
-                                        {/* </div> */}
                                     </div>
                                 {/* </div> */}
                                 {/* <div id="new-products-block" className="tab-pane">

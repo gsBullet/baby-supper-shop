@@ -1,19 +1,31 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react'
+import { Link, Navigate } from 'react-router-dom';
 import Nav from './Nav';
 import useFrontendContext from '../../../hooks/useFrontendContext';
 import resourcelink from '../../../hooks/resourcelink';
+import { AuthContext } from '../../../context/AuthContext';
+import Profile from '../Profile';
+import CardList from '../profilePages/CardList';
+// import Card from '../Card';
 
 
 function Header() {
-    const {state, dispatch} = useFrontendContext()
-    const {cards}=state
+    const { checkAuth } = useContext(AuthContext);
+    const { state, dispatch } = useFrontendContext();
+    // console.log(state);
+    let cards = [];
+
+    if (state?.cards) {
+        cards = state.cards;
+    }
+    const { total_cards_amount} = state;
     return (
         <>
             <header id="header" className="home">
-                <div className="header-nav">
-                    <div className="container">
-                        <div className="row">
+                <div>
+                    <div className="row">
+                        <div className="header-nav">
+
                             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 left-nav">
                                 {/* Block search  */}
                                 <div id="_desktop_seach_widget">
@@ -34,30 +46,36 @@ function Header() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 right-nav">
-                                <div className="userinfo-inner">
-                                    <ul className="userinfo">
-                                        <li className="log-in">
-                                            <Link to="/login" id="customer_login_link">Log in</Link>
-                                        </li>
-                                        <li className="create_account">
-                                            <Link to="/register" id="customer_register_link">Create Account</Link>
-                                        </li>
-                                        <li className="wishlist">
-                                            <a href="mywishlistpage.html">Wishlist</a>
-                                        </li>
-                                        <li className="checkout">
-                                            <a href="checkoutpage.html">Checkout</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 float-right text-right">
+                            {
+                                checkAuth.isAuth && checkAuth.data.role === 'customer' ?
+                                    <div className="userinfo-inner">
+                                        <ul className="userinfo">
+                                            <li className="checkout">
+                                                <Link to="/checkout" id="customer_register_link">Checkout</Link>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    :
+                                    <div className="userinfo-inner ">
+                                        <ul className="userinfo">
+                                            <li className="log-in">
+                                                <Link to="/login" id="customer_login_link">Log in</Link>
+                                            </li>
+                                            <li className="create_account">
+                                                <Link to="/register" id="customer_register_link">Create Account</Link>
+                                            </li>
+                                        </ul>
+                                    </div>
+                            }
+
                         </div>
-                    </div>
-                </div>
-                <div className="header-top">
-                    <div className="container">
-                        <div className="row">
+
+
+                        </div>
+                    
+                        <div className="header-top">
+
                             {/* --------------------desktop_logo------------ */}
                             <div id="desktop_logo" className="col-lg-3 col-md-5 col-sm-12 col-xs-12">
                                 <Link to="/">
@@ -72,79 +90,82 @@ function Header() {
                                         <div className="blockcart cart-preview inactive">
                                             <div className="header">
                                                 <span className="cart-link">
-                                                    <span className="cart-content">  
+                                                    <span className="cart-content">
                                                         <span className="cart-name">
-                                                           <span className='p-1'>
-                                                           <i className='fa fa-shopping-cart'></i>
-                                                           </span>
-                                                            <span className="cart-products-count">{cards.length}</span> items
+                                                            <span className='p-1'>
+                                                                <i className='fa fa-shopping-cart'></i>
+                                                            </span>
+                                                            <span className="cart-products-count">{cards?.length}</span> items
                                                         </span>
-                                                        <span className="cart-products-count hidden-lg-up">{cards.length}</span>
+                                                        <span className="cart-products-count hidden-lg-up">{cards?.length}</span>
                                                     </span>
                                                 </span>
-                                                <div className="cart-dropdown product-top-merge">
-                                                    <div className="product-container ">
+                                                <div className="cart-dropdown">
+                                                    <div className="product-container">
                                                         {
-                                                            cards.map((product,index)=>{
+                                                            cards?.map((product, index) => {
                                                                 return <div key={index} className="product">
-                                                                <a className="product-image" href="#">
-                                                                    <img src={resourcelink(product.thumb_image)} alt="Simul dolorem voluptaria" />
-                                                                </a>
-                                                                <div className="product-detail">
-                                                                    <div className="product-name">
-                                                                        <span className="quantity-formated">
-                                                                            <span className="quantity">{product.qty}</span>
-                                                                            &nbsp;x&nbsp;
-                                                                        </span>
-                                                                        <a className="cart_block_product_name" href="#">
-                                                                            {product.title}
+                                                                    <a className="product-image" href="#">
+                                                                        <img src={resourcelink(product.thumb_image)} alt="Simul dolorem voluptaria" />
+                                                                    </a>
+                                                                    <div className="product-detail">
+                                                                        <div className="product-name">
+                                                                            <a className="cart_block_product_name" href="#">
+                                                                                {product.title}
+                                                                            </a>
+                                                                        </div>
+                                                                        <div className="price">
+                                                                            <span className="quantity-formated">
+                                                                                <span className="quantity">{product.qty}</span>
+                                                                                &nbsp;x&nbsp;
+                                                                            </span>
+                                                                            ${product.discount_price || product.price} = ${product.qty * (product.discount_price || product.price)}
+                                                                        </div>
+                                                                        {/* <ul className="product-atributes">
+                                                        <li className="atributes">
+                                                            <span className="label">Size:</span>
+                                                            <span className="value">S</span>
+                                                        </li>
+                                                        <li className="atributes">
+                                                            <span className="label">Color:</span>
+                                                            <span className="value">Orange</span>
+                                                        </li>
+                                                    </ul> */}
+                                                                    </div>
+                                                                    <div className="remove-product">
+                                                                        <a className="remove-from-cart text-danger p-2 m-3"
+                                                                            onClick={() => dispatch({ fn: null, type: 'removeCard', payload: { index } })}
+                                                                            rel="nofollow" href="#">
+                                                                            <i className="fa-solid fa-trash"></i>
                                                                         </a>
                                                                     </div>
-                                                                    <div className="price">${product.price}</div>
-                                                                    <ul className="product-atributes">
-                                                                        <li className="atributes">
-                                                                            <span className="label">Size:</span>
-                                                                            <span className="value">S</span>
-                                                                        </li>
-                                                                        <li className="atributes">
-                                                                            <span className="label">Color:</span>
-                                                                            <span className="value">Orange</span>
-                                                                        </li>
-                                                                    </ul>
                                                                 </div>
-                                                                <div className="remove-product">
-                                                                    <a className="remove-from-cart" 
-                                                                    onClick={()=>dispatch({fn:null, type:'removeCard', payload:{index}})}
-                                                                    rel="nofollow" href="#">
-                                                                        <i className="material-icons">delete</i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
                                                             })
                                                         }
-                                                        
-                                                       
+
+
                                                     </div>
                                                     <div className="billing-info">
-                                                        <div className="billing subtotal-info">
-                                                            <span className="label">Subtotal</span>
-                                                            <span className="value">$71.48</span>
-                                                        </div>
-                                                        <div className="billing shipping-info">
-                                                            <span className="label">Shipping</span>
-                                                            <span className="value">$7.00</span>
-                                                        </div>
-                                                        <div className="billing tax-info">
-                                                            <span className="label">Taxes</span>
-                                                            <span className="value">$0.00</span>
-                                                        </div>
+                                                        {/* <div className="billing subtotal-info">
+                                        <span className="label">Subtotal</span>
+                                        <span className="value">$71.48</span>
+                                    </div>
+                                    <div className="billing shipping-info">
+                                        <span className="label">Shipping</span>
+                                        <span className="value">$7.00</span>
+                                    </div>
+                                    <div className="billing tax-info">
+                                        <span className="label">Taxes</span>
+                                        <span className="value">$0.00</span>
+                                    </div> */}
                                                         <div className="billing total-info">
                                                             <span className="label">Total</span>
-                                                            <span className="value">$78.48</span>
+                                                            <span className="value">${total_cards_amount}</span>
                                                         </div>
                                                     </div>
                                                     <div className="cart-btn col-xs-12">
                                                         <a href="checkoutpage.html" className="btn btn-primary checkout">Checkout</a>
+                                                        <Link to={'card'} className="btn btn-primary">Card</Link>
                                                     </div>
                                                 </div>
                                             </div>
@@ -174,18 +195,17 @@ function Header() {
                                 </div>
                             </div>
                         </div>
+                        {/* ----------------NAV BAR ------------------- */}
+                        {
+                            checkAuth.isAuth && checkAuth.data.role === 'customer' ?
+                                <Profile />
+                                :
+                                <Nav />
+                        }
                     </div>
                 </div>
-                {/* ----------------NAV BAR ------------------- */}
-                <Nav />
-            </header>
-            {/* -------------------mobile media---------- */}
-            <div id="mobile_top_menu_wrapper" className="hidden-lg-up" style={{ display: 'none' }}>
-                <div id="top_menu_closer">
-                    <i className="material-icons"></i>
-                </div>
-                <div className="js-top-menu mobile" id="_mobile_top_menu" />
-            </div>
+            </header >
+
         </>
     )
 }

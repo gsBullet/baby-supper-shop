@@ -6,16 +6,7 @@ const categoryModel = require('../Models/categoryModel');
 
 
 async function createCategory(req, res, next) {
-    // Finds the validation errors in this request and wraps them in an object with handy functions
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //     return res.status(422).json({
-    //         errors: errors.array()
-    //     });
-    // }
-
-    // console.log(req.body);
-
+ 
     const {
         title,
         parent
@@ -40,7 +31,8 @@ const getCategory = async (req,res,next) => {
            _id: id
     })
     .populate('parent')
-    .populate('creator');
+    .populate('creator')
+    
     
     return res.status(200).json(category);
 }

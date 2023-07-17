@@ -11,7 +11,8 @@ function AuthAdminRoute({children}) {
     checkAuth.isAuth && checkAuth.data.role === 'admin'?
         {...children}
         :
-        <Navigate to={'/login'} />
+        (checkAuth.isAuth && checkAuth?.data.role != 'admin' ? <Navigate to={'/'} /> : <Navigate to={'/login'} />)
+        
   )
 }
 

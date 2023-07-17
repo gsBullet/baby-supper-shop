@@ -102,17 +102,17 @@ function Footer() {
                                         <h3 className="h3 title_block hidden-md-down">Store information</h3>
                                         <div id="contact-info-container" className="footer-contact">
                                             <div className="block address col-lg-12 col-md-4 col-sm-4 col-xs-12">
-                                                <span className="icon"><i className="material-icons"></i></span>
+                                                <span className="icon"><i className="fas fa-home"></i></span>
                                                 <div className="content">Demo Shop<br />01 Demo Street<br />France</div>
                                             </div>
                                             <div className="block phone col-lg-12 col-md-4 col-sm-4 col-xs-12">
-                                                <span className="icon phone"><i className="material-icons"></i></span>
+                                                <span className="icon phone"><i className="fas fa-phone"></i></span>
                                                 <div className="content">
                                                     <a href="#">+00 900 123456789</a>
                                                 </div>
                                             </div>
                                             <div className="block email col-lg-12 col-md-4 col-sm-4 col-xs-12">
-                                                <span className="icon"><i className="material-icons"></i></span>
+                                                <span className="icon"><i className="fas fa-message"></i></span>
                                                 <div className="content">
                                                     <a href="#">admin@gmail.com</a>
                                                 </div>
@@ -152,7 +152,7 @@ function Footer() {
                                                         <div className="image col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                             <a href="#" className="thumbnail product-thumbnail">
                                                                 <img src="/assets/images/product/1.jpg" alt="product-img" />
-                                                                <img className="product-img-extra change" alt="product-img" src="./assets/images/product/2.jpg" />
+                                                                <img className="product-img-extra change" alt="product-img" src="/assets/images/product/2.jpg" />
                                                             </a>
                                                         </div>
                                                         <div className="caption col-lg-7 col-md-7 col-sm-7 col-xs-7">
@@ -236,7 +236,7 @@ function Footer() {
                                                     <div className="row">
                                                         <div className="image col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                             <a href="#" className="thumbnail product-thumbnail">
-                                                                <img src="assets/images/product/4.jpg" alt="product-img" />
+                                                                <img src="/assets/images/product/4.jpg" alt="product-img" />
                                                                 <img className="product-img-extra change" alt="product-img" src="assets/images/product/5.jpg" />
                                                             </a>
                                                         </div>

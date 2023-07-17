@@ -4,6 +4,7 @@ const {
 const productModel = require('../Models/productModel');
 const fs = require('fs-extra');
 const path = require('path');
+const moment = require('moment');
 const {
     uploadFile
 } = require('./helper-controller');
@@ -13,6 +14,18 @@ const allProducts = async (req, res, next) => {
     let products = await productModel.find()
         .populate('category')
         .populate('creator');
+
+        products = await products.map(product=>{
+            let today = new moment();
+            let product_discount_date =  moment(product.discount_date);
+            let diff = product_discount_date.diff(today,'days');
+            if(diff<=0){
+                product.discount_date =null,
+                product.discount_price = null,
+                product.discount = null
+            }
+            return product;
+        });
     return res.status(201).json(products);
 
 }
@@ -75,7 +88,7 @@ const getProducts = async (req, res, next) => {
             _id: id
         })
         .populate('category')
-        .populate('creator');
+        .populate('creator')
     return res.status(200).json(products);
 }
 async function updateProducts(req, res, next) {

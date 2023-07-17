@@ -39,11 +39,19 @@ function ProductsItem({ product,index}) {
                         <p className="description">
                             The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed sp..</p>
                         <div className="price">
+                            {
+                                product.discount?
                             <div>
                                 <span className="regular price-old">${product.price}</span>
                                 <span className="price-discount">{product.discount}%</span>
                                 <span className="price-sale">${product.discount_price}</span>
                             </div>
+                            :
+                            <div>
+                                <span className="price-sale">${product.price}</span>
+                            </div>
+
+                            }
                             <div className='text-right'>
                                 <button onClick={()=>dispatch({fn:null, type:'insertCard', payload:{product}})} className='btn btn-success rounded'> 
                                 <i className='fa fa-shopping-cart'></i>

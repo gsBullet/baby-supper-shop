@@ -25,13 +25,13 @@ function BackendNav() {
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="">
-                                        <i class="fa-solid fa-edit"></i>&nbsp;
+                                        <i className="fa-solid fa-edit"></i>&nbsp;
                                         User Management  
                                     </Link>
                                 </li> 
                                 <li className="nav-item">
                                     <Link className="nav-link" to="./contact">
-                                        <i class="fa-solid fa-edit"></i>&nbsp;
+                                        <i className="fa-solid fa-edit"></i>&nbsp;
                                         Contact Message
                                     </Link>
                                 </li>
@@ -43,32 +43,32 @@ function BackendNav() {
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="./card">
-                                        <i class="fa-solid fa-edit"></i>&nbsp;
+                                        <i className="fa-solid fa-edit"></i>&nbsp;
                                         Orders
                                     </Link>
                                 </li>
                                 {/* Products management */}
                                 <li className="nav-item">
                                     <a className="nav-link" href="#">
-                                        <i class="fa-solid fa-edit"></i>&nbsp;
+                                        <i className="fa-solid fa-edit"></i>&nbsp;
                                         Products management
                                     </a>
                                     <ul>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="/dashboard/all-products">
-                                                <i class="fa-solid fa-list"></i>&nbsp;
+                                                <i className="fa-solid fa-list"></i>&nbsp;
                                                 All Products
                                             </Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="/dashboard/categories">
-                                                <i class="fa-solid fa-list"></i>&nbsp;
+                                                <i className="fa-solid fa-list"></i>&nbsp;
                                                 All Category
                                             </Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="./card">
-                                                <i class="fa-solid fa-list"></i>&nbsp;
+                                                <i className="fa-solid fa-list"></i>&nbsp;
                                                 Reporting
                                             </Link>
                                         </li>
@@ -77,25 +77,25 @@ function BackendNav() {
                                 {/* Blog management */}
                                 <li className="nav-item">
                                     <a className="nav-link" href="#">
-                                        <i class="fa-solid fa-edit"></i>&nbsp;
+                                        <i className="fa-solid fa-edit"></i>&nbsp;
                                         Blog management
                                     </a>
                                     <ul>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="./card">
-                                                <i class="fa-solid fa-list"></i>&nbsp;
+                                                <i className="fa-solid fa-list"></i>&nbsp;
                                                 All Blogs
                                             </Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="./card">
-                                                <i class="fa-solid fa-list"></i>&nbsp;
+                                                <i className="fa-solid fa-list"></i>&nbsp;
                                                 Blog Category
                                             </Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="./card">
-                                                <i class="fa-solid fa-list"></i>&nbsp;
+                                                <i className="fa-solid fa-list"></i>&nbsp;
                                                 Comments
                                             </Link>
                                         </li>
@@ -104,49 +104,49 @@ function BackendNav() {
                                 {/* Frontend management */}
                                 <li className="nav-item">
                                     <a className="nav-link" href="#">
-                                        <i class="fa-solid fa-edit"></i>&nbsp;
+                                        <i className="fa-solid fa-edit"></i>&nbsp;
                                         Frontend management
                                     </a>
                                     <ul>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="./card">
-                                                <i class="fa-solid fa-list"></i>&nbsp;
+                                                <i className="fa-solid fa-list"></i>&nbsp;
                                                 Banners
                                             </Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="./card">
-                                                <i class="fa-solid fa-list"></i>&nbsp;
+                                                <i className="fa-solid fa-list"></i>&nbsp;
                                                 Basic Info 
                                             </Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="./card">
-                                                <i class="fa-solid fa-list"></i>&nbsp;
+                                                <i className="fa-solid fa-list"></i>&nbsp;
                                                 Featuers
                                             </Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="./card">
-                                                <i class="fa-solid fa-list"></i>&nbsp;
+                                                <i className="fa-solid fa-list"></i>&nbsp;
                                                 Review
                                             </Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="./card">
-                                                <i class="fa-solid fa-list"></i>&nbsp;
+                                                <i className="fa-solid fa-list"></i>&nbsp;
                                                 Advertise
                                             </Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="./card">
-                                                <i class="fa-solid fa-list"></i>&nbsp;
+                                                <i className="fa-solid fa-list"></i>&nbsp;
                                                 DiscountProducts
                                             </Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="./card">
-                                                <i class="fa-solid fa-list"></i>&nbsp;
+                                                <i className="fa-solid fa-list"></i>&nbsp;
                                                 Brands
                                             </Link>
                                         </li>

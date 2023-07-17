@@ -37,12 +37,16 @@ function App() {
                     <Route path="allproducts" element={<FrontentAllProducts/>}/>
                     <Route path="product-details" element={<FrontentProductDetails/>}/>
                     <Route path="card" element={<FrontentCard/>}/> 
-                    <Route path="contact" element={<FrontentContact/>}
-                    />
+                    <Route path="contact" element={<FrontentContact/>} />
 
-                    <Route path="profile" element={<AuthCustomerRoute><FrontentProfile/></AuthCustomerRoute>}>
+                    <Route path="/profile" element={
+                      <AuthCustomerRoute>
+                        <FrontentProfileWishList/>
+                      </AuthCustomerRoute>
+                      }>
+
                       <Route index element={<FrontentProfileCardList/>}/>
-                      <Route path="cardlist" element={<FrontentProfileCardList/>}/>
+                      {/* <Route path="cardlist" element={<FrontentProfileCardList/>}/> */}
                       <Route path="orderlist" element={<FrontentProfileOrderList/>}/>
                       <Route path="dashboard" element={<FrontentProfileDashboard/>}/>
                       <Route path="payment" element={<FrontentProfilePayment/>}/>

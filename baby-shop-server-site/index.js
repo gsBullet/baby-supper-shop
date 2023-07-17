@@ -23,20 +23,13 @@
   app.use('/uploads', express.static('uploads'))
 
 
-  // app.get('/test',(req,res)=>{
-  //   setTimeout(() => {
-  //     res.status(200).json('got it from server');
-  //   }, 2000);
-  // })
   app.use('/api/user', userRouter);
   app.use('/api/products', productsRouter);
   app.use('/api/category', categoryRouter);
-  // app.post('/api/test_post', (req, res) => {
-  //     res.json(req.body);
-  // })
+
 
   let terminal_loader_trigger = require('./hooks/loader');
-//   process.stdout.write("\n 📮  connecting mongodb\n");
+
   terminal_loader_trigger = terminal_loader_trigger();
 
   mongoose
